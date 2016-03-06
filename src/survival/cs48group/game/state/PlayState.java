@@ -19,8 +19,8 @@ public class PlayState extends State{
 	//private int score = 0;
 	//private Font scoreFont;
     private static int count=0;
-	public static ArrayList<Bullet> ArrayB = new ArrayList<Bullet>(100);
-	public static ArrayList<Enemy> ArrayE = new ArrayList<Enemy>(100); 
+	public static ArrayList<Bullet> ArrayB = new ArrayList<Bullet>();
+	public static ArrayList<Enemy> ArrayE = new ArrayList<Enemy>(); 
 	private static int bgp=-1024+GameMain.GAME_HEIGHT;
 	
 	//initialize the play state and create new main character object

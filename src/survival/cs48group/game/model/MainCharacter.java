@@ -1,13 +1,14 @@
 package survival.cs48group.game.model;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import survival.cs48group.game.main.GameMain;
 import survival.cs48group.game.model.Bullet;
 import survival.cs48group.game.state.PlayState;
 
 public class MainCharacter {
-	private int x, y, width, height, VelX,VelY;
+    private int x, y, width, height, VelX,VelY,bombNum;
 	private final static int Move_Speed=30;
 	private Rectangle rect;
 	public boolean powerup = false;
@@ -18,6 +19,7 @@ public class MainCharacter {
 		this.y = y;
 		this.width = width;
 		this.height= height;
+		this.bombNum = 1;
 		rect =new Rectangle(x,y,width,height);
 		VelX=0;
 		VelY=0;
@@ -109,15 +111,29 @@ public class MainCharacter {
 			PlayState.ArrayB.add(new Bullet(x-100,y-20,50,50));
 		}
 	}
+
+    	public void bomb(){
+	    if(bombNum > 0) {
+		bombNum--;
+		if(bombNum < 0) {
+		    bombNum = 0;
+		}
+		PlayState.ArrayE = new ArrayList<Enemy>();
+	    }
+	}
+
+    public void getBomb() {
+	bombNum++;
+	if(bombNum > 3) {
+	    bombNum = 3;
+	}
+    }
+
 	
 	//get the rectangle
 	public Rectangle getRect() {
 		return rect;
 	}
 	
-	//not implemented yet
-	public void bomb(){
-		
-	}
 }
 
