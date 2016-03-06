@@ -3,6 +3,7 @@ package survival.cs48group.game.model;
 import java.awt.Rectangle;
 import survival.cs48group.game.state.PlayState;
 import survival.cs48group.game.main.GameMain;
+import survival.cs48group.game.state.GameoverState;
 
 public class Item {
 		private int x, y, width, height, VelX,VelY;
@@ -29,9 +30,9 @@ public class Item {
 			x += VelX;
 			if (x<0){
 				x=0;
-				this.VelX=-VelX;
+				this.VelX=-1*VelX;
 			} else if (x+width>GameMain.GAME_WIDTH){
-				this.VelX=-Velx;
+				this.VelX=-1*VelX;
 			}
 			
 			
@@ -64,6 +65,10 @@ public class Item {
 		//get the x coordinate
 		public int getX(){
 			return x;
+		}
+
+		public int getKind(){
+			return kind;
 		}
 		
 		//get the y coordinate

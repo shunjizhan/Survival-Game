@@ -13,6 +13,7 @@ import survival.cs48group.game.main.Resources;
 import survival.cs48group.game.model.MainCharacter;
 import survival.cs48group.game.model.Bullet;
 import survival.cs48group.game.model.Enemy;
+import survival.cs48group.game.model.Item;
 
 public class PlayState extends State{
 	private MainCharacter  mc;
@@ -21,6 +22,7 @@ public class PlayState extends State{
     private static int count=0;
 	public static ArrayList<Bullet> ArrayB = new ArrayList<Bullet>();
 	public static ArrayList<Enemy> ArrayE = new ArrayList<Enemy>(); 
+	public static ArrayList<Item> ArrayI = new ArrayList<Item>();  
 	private static int bgp=-1024+GameMain.GAME_HEIGHT;
 	
 	//initialize the play state and create new main character object
@@ -35,6 +37,7 @@ public class PlayState extends State{
 	@Override
 	public void updateState() {
 		mc.update();
+
 		for(int i=0; i<ArrayB.size(); i++) {
 			if (ArrayB.get(i).isDead)
 				ArrayB.remove(ArrayB.get(i));
@@ -64,11 +67,20 @@ public class PlayState extends State{
 	public void renderImages(Graphics g) {	
 		
 		g.drawImage(Resources.background,-300,bgp,null);
-		
+			for (int i=0;i<ArrayE.size();i++){
+				mc.onCollideWith(ArrayE.get(i));
+			}
+			for (int i=0;i<ArrayI.size();i++){
+				mc.onCollideWith1(ArrayI.get(i));
+			}
+
+
 			for (int i=0;i<ArrayB.size();i++){
-				for (int j=0;j<ArrayE.size();j++)	
+				for (int j=0;j<ArrayE.size();j++)
+				    if (!ArrayE.get(i).isDead)	
 					ArrayB.get(i).onCollideWith(ArrayE.get(j));
 			}
+
 			g.drawImage(Resources.flight, mc.getX(), mc.getY(), null);
 			
 		//if(ArrayB.size() > 0){

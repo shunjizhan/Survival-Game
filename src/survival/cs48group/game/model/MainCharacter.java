@@ -5,10 +5,12 @@ import java.util.ArrayList;
 
 import survival.cs48group.game.main.GameMain;
 import survival.cs48group.game.model.Bullet;
+import survival.cs48group.game.model.Item;
 import survival.cs48group.game.state.PlayState;
+import survival.cs48group.game.state.GameoverState;
 
 public class MainCharacter {
-    private int x, y, width, height, VelX,VelY,bombNum;
+    private int x, y, width, height, VelX,VelY,bombNum,hp;
 	private final static int Move_Speed=30;
 	private Rectangle rect;
 	public boolean powerup = false;
@@ -17,6 +19,7 @@ public class MainCharacter {
 	public MainCharacter(int x, int y, int width, int height){
 		this.x = x;
 		this.y = y;
+		this.hp=6;
 		this.width = width;
 		this.height= height;
 		this.bombNum = 1;
@@ -134,6 +137,32 @@ public class MainCharacter {
 	public Rectangle getRect() {
 		return rect;
 	}
-	
+
+
+	public void onCollideWith(Enemy a){
+		if (this.getRect().intersects(a.getRect()))
+		   {this.hp--;
+		    a.disapear();
+		    if (this.hp==0){
+		    	GameMain.sGame.setCurrentState(new GameoverState());
+		    }
+		   }
+	}	
+
+	public void onCollideWith1(Item a){
+		if (this.getRect().intersects(a.getRect()))
+		   {
+		   	int i=a.getKind();
+		    if (i==0)
+		    	{this.hp++;}
+		    else if (i==1)
+		    	{this.bombNum++;}
+		    else if (i==3)
+		    	{i++;}
+		    PlayState.ArrayI.remove(a);
+
+		   }
+	}
+
 }
 
