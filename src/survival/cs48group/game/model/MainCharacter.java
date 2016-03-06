@@ -10,7 +10,8 @@ import survival.cs48group.game.state.PlayState;
 import survival.cs48group.game.state.GameoverState;
 
 public class MainCharacter {
-    private int x, y, width, height, VelX,VelY,bombNum,hp;
+    private int x, y, width, height, VelX,VelY,bombNum;
+    public int hp;
 	private final static int Move_Speed=30;
 	private Rectangle rect;
 	public boolean powerup = false;
@@ -19,7 +20,7 @@ public class MainCharacter {
 	public MainCharacter(int x, int y, int width, int height){
 		this.x = x;
 		this.y = y;
-		this.hp=6;
+		this.hp=3;
 		this.width = width;
 		this.height= height;
 		this.bombNum = 1;
@@ -143,7 +144,7 @@ public class MainCharacter {
 		if (this.getRect().intersects(a.getRect()))
 		   {this.hp--;
 		    a.disapear();
-		    if (this.hp==0){
+		    if (this.hp==-1){
 		    	GameMain.sGame.setCurrentState(new GameoverState());
 		    }
 		   }

@@ -67,13 +67,25 @@ public class PlayState extends State{
 	public void renderImages(Graphics g) {	
 		
 		g.drawImage(Resources.background,-300,bgp,null);
+
 			for (int i=0;i<ArrayE.size();i++){
 				mc.onCollideWith(ArrayE.get(i));
 			}
 			for (int i=0;i<ArrayI.size();i++){
 				mc.onCollideWith1(ArrayI.get(i));
 			}
-
+		if (mc.hp==6)
+			g.drawImage(Resources.hp6,50,50,null);
+		 else if (mc.hp==5)
+		 		g.drawImage(Resources.hp5,50,50,null);
+		 	else if (mc.hp==4)
+		 			g.drawImage(Resources.hp4,50,50,null);
+		 		else if (mc.hp==3)
+		 			g.drawImage(Resources.hp3,50,50,null);
+		 		else if (mc.hp==2)
+		 			g.drawImage(Resources.hp2,50,50,null);
+		 		else if (mc.hp==1)
+		 			g.drawImage(Resources.hp1,50,50,null);
 
 			for (int i=0;i<ArrayB.size();i++){
 				for (int j=0;j<ArrayE.size();j++)
