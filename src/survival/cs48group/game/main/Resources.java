@@ -19,6 +19,7 @@ public class Resources {
 		bullet = loadImage("fireNew.png");
 		background= loadImage("sky123.JPG");
 		enemies = loadImage("monsterNew.png");
+		
 	}
 	
 	

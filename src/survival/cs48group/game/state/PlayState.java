@@ -77,7 +77,6 @@ public class PlayState extends State{
 
 			for (int i=0;i<ArrayB.size();i++){
 				for (int j=0;j<ArrayE.size();j++)
-				    if (!ArrayE.get(i).isDead)	
 					ArrayB.get(i).onCollideWith(ArrayE.get(j));
 			}
 
