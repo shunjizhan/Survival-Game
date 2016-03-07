@@ -10,11 +10,11 @@ import survival.cs48group.game.state.PlayState;
 import survival.cs48group.game.state.GameoverState;
 
 public class MainCharacter {
-    private int x, y, width, height, VelX,VelY,bombNum;
-    public int hp;
+    private int x, y, width, height, VelX,VelY;
+    public int hp,bombNum;
 	private final static int Move_Speed=30;
 	private Rectangle rect;
-	public boolean powerup = false;
+	public int powerLevel = 1;
 	
 	//constructor for the main character
 	public MainCharacter(int x, int y, int width, int height){
@@ -108,12 +108,16 @@ public class MainCharacter {
 	//handle the bullet that main character create; shoot
 	public void shoot(){
 		PlayState.ArrayB.add(new Bullet(x,y-20,50,50));
-		if (powerup){
+		if (powerLevel > 1){
 			PlayState.ArrayB.add(new Bullet(x+50,y-20,50,50));
-			PlayState.ArrayB.add(new Bullet(x+100,y-20,50,50));
 			PlayState.ArrayB.add(new Bullet(x-50,y-20,50,50));
-			PlayState.ArrayB.add(new Bullet(x-100,y-20,50,50));
 		}
+
+		if (powerLevel > 2) {
+		    PlayState.ArrayB.add(new Bullet(x+100,y-20,50,50));
+		    PlayState.ArrayB.add(new Bullet(x-100,y-20,50,50));
+		}
+
 	}
 
     	public void bomb(){
@@ -144,9 +148,11 @@ public class MainCharacter {
 		if (this.getRect().intersects(a.getRect()))
 		   {this.hp--;
 		    PlayState.ArrayE.remove(a);
+		    this.powerLevel = 1;
 		    if (this.hp==-1){
 		    	GameMain.sGame.setCurrentState(new GameoverState());
 		    }
+		  
 		   }
 	}	
 
@@ -160,7 +166,7 @@ public class MainCharacter {
 		    else if (i==1)
 		    	{this.getBomb();}
 		    else if (i==2)
-		    	{i++;}
+		    	{this.powerLevel++;}
 		    PlayState.ArrayI.remove(a);
 
 		   }

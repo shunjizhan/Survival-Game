@@ -6,9 +6,9 @@ import survival.cs48group.game.main.GameMain;
 import survival.cs48group.game.state.PlayState;
 
 public class Bullet {
-	private int x, y, width, height, vel;
-	private final static int Move_Speed=-32;
-	private Rectangle rect;
+	public int x, y, width, height, vel;
+	private static int Move_Speed=-32;
+	public Rectangle rect;
 	public boolean isDead=false;
 	
 	//constructor for the bullet (fire ball)

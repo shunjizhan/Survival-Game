@@ -78,6 +78,8 @@ public class PlayState extends State{
 			for (int i=0;i<ArrayI.size();i++){
 				mc.onCollideWith1(ArrayI.get(i));
 			}
+
+			// draw lives number
 		if (mc.hp==3){
 			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-110,null);
 			g.drawImage(Resources.hp,110,GameMain.GAME_HEIGHT-110,null);
@@ -89,6 +91,20 @@ public class PlayState extends State{
 		}
 		if (mc.hp==1){
 			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-110,null);	
+		}
+
+		// draw bombs number
+		if (mc.bombNum==3){
+			g.drawImage(Resources.bomb,0+650,GameMain.GAME_HEIGHT-110,null);
+			g.drawImage(Resources.bomb,110+650,GameMain.GAME_HEIGHT-110,null);
+			g.drawImage(Resources.bomb,220+650,GameMain.GAME_HEIGHT-110,null);
+		}
+		if (mc.bombNum==2){
+			g.drawImage(Resources.bomb,220+650,GameMain.GAME_HEIGHT-110,null);
+			g.drawImage(Resources.bomb,110+650,GameMain.GAME_HEIGHT-110,null);
+		}
+		if (mc.bombNum==1){
+			g.drawImage(Resources.bomb,220+650,GameMain.GAME_HEIGHT-110,null);	
 		}
 
 			for (int i=0;i<ArrayB.size();i++){
@@ -162,12 +178,7 @@ public class PlayState extends State{
 			setCurrentState(new MenuState());
 		}
 		else if (k.getKeyCode() == KeyEvent.VK_F2) {
-			if(mc.powerup == true){
-				mc.powerup = false;
-			}
-			else {		
-				mc.powerup = true;
-			}
+       
 		}
 	}
 	
