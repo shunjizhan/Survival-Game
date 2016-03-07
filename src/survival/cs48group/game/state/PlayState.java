@@ -28,7 +28,7 @@ public class PlayState extends State{
 	//initialize the play state and create new main character object
 	@Override
 	public void initializeState() {
-		mc = new MainCharacter(710,620,192,312);
+		mc = new MainCharacter(GameMain.GAME_WIDTH/2,GameMain.GAME_HEIGHT,200,200);
 		
 		//scoreFont = new Font("SansSerif", Font.BOLD, 25);
 	}
@@ -70,7 +70,7 @@ public class PlayState extends State{
 	@Override
 	public void renderImages(Graphics g) {	
 		
-		g.drawImage(Resources.background,-300,bgp,null);
+		g.drawImage(Resources.background,0,bgp,null);
 
 			for (int i=0;i<ArrayE.size();i++){
 				mc.onCollideWith(ArrayE.get(i));

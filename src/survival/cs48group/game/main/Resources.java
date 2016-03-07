@@ -14,11 +14,11 @@ public class Resources {
 	
 	//load all the images and sound for the game
 	public static void load(){
-		welcome = loadImage("Menu.png");
-		flight = loadImage("character11.png");
-		bullet = loadImage("fireNew.png");
+		welcome = loadImage("background1.png");
+		flight = loadImage("character.png");
+		bullet = loadImage("bigbullet.png");
 		bullet2 = loadImage("bullet.png");
-		background= loadImage("sky123.JPG");
+		background= loadImage("ingamebackground.png");
 		enemies = loadImage("monsterNew.png");
 		hpitem=loadImage("hpitem.png");
 		bulletitem=loadImage("item2.png");

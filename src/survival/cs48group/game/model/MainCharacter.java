@@ -107,15 +107,15 @@ public class MainCharacter {
 	
 	//handle the bullet that main character create; shoot
 	public void shoot(){
-	    PlayState.ArrayB.add(new Bullet(x,y-20,50,50,1));
+	    PlayState.ArrayB.add(new Bullet(x,y-20,50,55,1));
 		if (powerLevel > 1){
-		    PlayState.ArrayB.add(new Bullet(x+50,y-20,50,50,2));
-		    PlayState.ArrayB.add(new Bullet(x-50,y-20,50,50,2));
+		    PlayState.ArrayB.add(new Bullet(x+50,y-20,50,55,2));
+		    PlayState.ArrayB.add(new Bullet(x-50,y-20,50,55,2));
 		}
 
 		if (powerLevel > 2) {
-		    PlayState.ArrayB.add(new Bullet(x+100,y-20,50,50,1));
-		    PlayState.ArrayB.add(new Bullet(x-100,y-20,50,50,1));
+		    PlayState.ArrayB.add(new Bullet(x+100,y-20,50,55,1));
+		    PlayState.ArrayB.add(new Bullet(x-100,y-20,50,55,1));
 		}
 
 	}
