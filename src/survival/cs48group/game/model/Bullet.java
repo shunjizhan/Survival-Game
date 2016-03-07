@@ -42,8 +42,11 @@ public class Bullet {
 	//handle with the collision between enemies and bullets
 	public void onCollideWith(Enemy a){
 		if (this.getRect().intersects(a.getRect()))
-		   {this.disapear();
-		    a.disapear();
+		   {PlayState.ArrayB.remove(this);
+		   	a.hp--;
+		   	if (a.hp<0)
+		   		{PlayState.ArrayE.remove(a);}
+		   
 		   }
 	}	
 

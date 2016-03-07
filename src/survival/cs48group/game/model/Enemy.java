@@ -9,11 +9,12 @@ public class Enemy {
 		private final int Move_Speed=1;
 		private Rectangle rect;
 		public boolean isDead=false;
-		
+		public int hp;
 		//constructor for enemy object
-		public Enemy(int x, int y, int width, int height){
+		public Enemy(int x, int y, int width, int height, int hp){
 			this.x = x;
 			this.y = y;
+			this.hp=hp;
 			this.width = width;
 			this.height= height;
 			rect =new Rectangle(x,y,width,height);

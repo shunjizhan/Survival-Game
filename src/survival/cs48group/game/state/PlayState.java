@@ -38,14 +38,14 @@ public class PlayState extends State{
 	public void updateState() {
 		mc.update();
 
-		for(int i=0; i<ArrayB.size(); i++) {
+	/*	for(int i=0; i<ArrayB.size(); i++) {
 			if (ArrayB.get(i).isDead)
 				ArrayB.remove(ArrayB.get(i));
 		}
 	    for (int i=0; i<ArrayE.size();i++){
 	    	if (ArrayE.get(i).isDead)
 				ArrayE.remove(ArrayE.get(i));
-	    }
+	    }*/
 			for(int i=0; i<ArrayB.size(); i++) {
 				ArrayB.get(i).update();
 			}
@@ -109,6 +109,7 @@ public class PlayState extends State{
 
 			for (int i=0;i<ArrayB.size();i++){
 				for (int j=0;j<ArrayE.size();j++)
+					if ((i<ArrayB.size()) && (j<ArrayE.size()))
 					ArrayB.get(i).onCollideWith(ArrayE.get(j));
 			}
 
@@ -138,7 +139,7 @@ public class PlayState extends State{
 			count++;
 			if (count % 25==0)
 			{   int x=(int) (Math.random()*GameMain.GAME_WIDTH);
-				ArrayE.add(new Enemy(x,0,200,100));
+				ArrayE.add(new Enemy(x,0,200,100,3));
 			}
 			for (int i1=0; i1<ArrayE.size();i1++){
 				g.drawImage(Resources.enemies,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
