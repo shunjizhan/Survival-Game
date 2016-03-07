@@ -116,7 +116,12 @@ public class PlayState extends State{
 			
 		
 			for(int i1=0; i1<ArrayB.size(); i1++) {
+			    if(ArrayB.get(i1).getKind() == 1) {
 				g.drawImage(Resources.bullet, ArrayB.get(i1).getX(), ArrayB.get(i1).getY(), null);
+			    }
+			    if(ArrayB.get(i1).getKind() == 2){
+				g.drawImage(Resources.bullet2, ArrayB.get(i1).getX(), ArrayB.get(i1).getY(), null);
+			    }
 			}
 	
 			for (int i2=0;i2<ArrayI.size();i2++){

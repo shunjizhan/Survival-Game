@@ -10,13 +10,15 @@ public class Bullet {
 	private static int Move_Speed=-32;
 	public Rectangle rect;
 	public boolean isDead=false;
+    public int kind;
 	
 	//constructor for the bullet (fire ball)
-	public Bullet(int x, int y, int width, int height){
+    public Bullet(int x, int y, int width, int height, int kind){
 		this.x = x + width  +6;
 		this.y = y + height ;
 		this.width = width;
 		this.height= height;
+		this.kind = kind;
 		rect =new Rectangle(x,y,width,height);
 		vel=Move_Speed;
 	}
@@ -81,5 +83,9 @@ public class Bullet {
 	public Rectangle getRect() {
 		return rect;
 	}
+
+    public int getKind() {
+	return this.kind;
+    }
 
 }
