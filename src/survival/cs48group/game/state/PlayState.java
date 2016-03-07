@@ -79,16 +79,16 @@ public class PlayState extends State{
 				mc.onCollideWith1(ArrayI.get(i));
 			}
 		if (mc.hp==3){
-			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-120,null);
-			g.drawImage(Resources.hp,110,GameMain.GAME_HEIGHT-120,null);
-			g.drawImage(Resources.hp,220,GameMain.GAME_HEIGHT-120,null);
+			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-110,null);
+			g.drawImage(Resources.hp,110,GameMain.GAME_HEIGHT-110,null);
+			g.drawImage(Resources.hp,220,GameMain.GAME_HEIGHT-110,null);
 		}
 		if (mc.hp==2){
-			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-120,null);
-			g.drawImage(Resources.hp,110,GameMain.GAME_HEIGHT-120,null);
+			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-110,null);
+			g.drawImage(Resources.hp,110,GameMain.GAME_HEIGHT-110,null);
 		}
 		if (mc.hp==1){
-			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-120,null);	
+			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-110,null);	
 		}
 
 			for (int i=0;i<ArrayB.size();i++){
