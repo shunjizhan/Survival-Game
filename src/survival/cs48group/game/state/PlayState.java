@@ -52,6 +52,10 @@ public class PlayState extends State{
 		    for (int i=0; i<ArrayE.size();i++){
 		    	ArrayE.get(i).update();
 		    }
+		    for (int i=0; i<ArrayI.size();i++){
+		    	ArrayI.get(i).update();
+		    }
+		    
 		if (bgp>=0)
 			bgp=-1200+GameMain.GAME_HEIGHT;
 		bgp++;
@@ -74,18 +78,18 @@ public class PlayState extends State{
 			for (int i=0;i<ArrayI.size();i++){
 				mc.onCollideWith1(ArrayI.get(i));
 			}
-		if (mc.hp==6)
-			g.drawImage(Resources.hp6,50,50,null);
-		 else if (mc.hp==5)
-		 		g.drawImage(Resources.hp5,50,50,null);
-		 	else if (mc.hp==4)
-		 			g.drawImage(Resources.hp4,50,50,null);
-		 		else if (mc.hp==3)
-		 			g.drawImage(Resources.hp3,50,50,null);
-		 		else if (mc.hp==2)
-		 			g.drawImage(Resources.hp2,50,50,null);
-		 		else if (mc.hp==1)
-		 			g.drawImage(Resources.hp1,50,50,null);
+		if (mc.hp==3){
+			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-120,null);
+			g.drawImage(Resources.hp,110,GameMain.GAME_HEIGHT-120,null);
+			g.drawImage(Resources.hp,220,GameMain.GAME_HEIGHT-120,null);
+		}
+		if (mc.hp==2){
+			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-120,null);
+			g.drawImage(Resources.hp,110,GameMain.GAME_HEIGHT-120,null);
+		}
+		if (mc.hp==1){
+			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-120,null);	
+		}
 
 			for (int i=0;i<ArrayB.size();i++){
 				for (int j=0;j<ArrayE.size();j++)
@@ -94,11 +98,20 @@ public class PlayState extends State{
 
 			g.drawImage(Resources.flight, mc.getX(), mc.getY(), null);
 			
-		//if(ArrayB.size() > 0){
+		
 			for(int i1=0; i1<ArrayB.size(); i1++) {
 				g.drawImage(Resources.bullet, ArrayB.get(i1).getX(), ArrayB.get(i1).getY(), null);
 			}
-		//}
+	
+			for (int i2=0;i2<ArrayI.size();i2++){
+				if (ArrayI.get(i2).getKind()==0)
+					g.drawImage(Resources.hpitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
+				if (ArrayI.get(i2).getKind()==1)
+					g.drawImage(Resources.bombitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
+
+				if (ArrayI.get(i2).getKind()==2)
+					g.drawImage(Resources.bulletitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
+			}
 		
 			if (count>10000) { count=0;}
 			count++;

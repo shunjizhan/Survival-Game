@@ -143,7 +143,7 @@ public class MainCharacter {
 	public void onCollideWith(Enemy a){
 		if (this.getRect().intersects(a.getRect()))
 		   {this.hp--;
-		    a.disapear();
+		    PlayState.ArrayE.remove(a);
 		    if (this.hp==-1){
 		    	GameMain.sGame.setCurrentState(new GameoverState());
 		    }
@@ -155,10 +155,11 @@ public class MainCharacter {
 		   {
 		   	int i=a.getKind();
 		    if (i==0)
-		    	{this.hp++;}
+		    	{if (this.hp<3) 
+		    		{this.hp++;}}
 		    else if (i==1)
-		    	{this.bombNum++;}
-		    else if (i==3)
+		    	{this.getBomb();}
+		    else if (i==2)
 		    	{i++;}
 		    PlayState.ArrayI.remove(a);
 
