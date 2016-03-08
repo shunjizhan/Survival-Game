@@ -15,6 +15,7 @@ public class MainCharacter {
 	private final static int Move_Speed=30;
 	private Rectangle rect;
 	public int powerLevel = 1;
+    public boolean superPower;
 	
 	//constructor for the main character
 	public MainCharacter(int x, int y, int width, int height){
@@ -24,6 +25,7 @@ public class MainCharacter {
 		this.width = width;
 		this.height= height;
 		this.bombNum = 1;
+		this.superPower = false;
 		rect =new Rectangle(x+width/10*2,y+height/10*2,width/10*6,height/10*6);
 		VelX=0;
 		VelY=0;

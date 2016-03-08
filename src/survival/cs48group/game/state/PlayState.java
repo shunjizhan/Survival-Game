@@ -75,11 +75,18 @@ public class PlayState extends State{
 	
 	//draw all the images needed in the play state
 	@Override
-	public void renderImages(Graphics g) {	
-		
-		if (BossCreated){
-		g.drawImage(Resources.boss,bs.getX(),bs.getY(),null);}
+	public void renderImages(Graphics g) {
+	    if(mc.superPower == true) {
+		mc.shoot();
+	    }
+	    if(count % 5 == 0) {
+		mc.shoot();
+	    }
 		g.drawImage(Resources.background,0,bgp,null);
+		if (BossCreated){
+		g.drawImage(Resources.boss,bs.getX(),bs.getY(),null);
+		}
+		
 
 			for (int i=0;i<ArrayE.size();i++){
 				mc.onCollideWith(ArrayE.get(i));
@@ -227,6 +234,8 @@ public class PlayState extends State{
 				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
 			}
+
+        
 	}
 	
 	//not implemented yet
@@ -267,7 +276,12 @@ public class PlayState extends State{
 			setCurrentState(new MenuState());
 		}
 		else if (k.getKeyCode() == KeyEvent.VK_F2) {
-		    this.score += 10;
+		    if(mc.superPower == true) {
+			mc.superPower = false;
+		    }
+		    else {
+			mc.superPower = true;
+		    }
 		}
 	}
 	
@@ -288,27 +302,18 @@ public class PlayState extends State{
 	}
 
     public void createEnemy1() {
-   
-    	if(BossCreated == false) {
-	   		bs=new Boss(200,50,300,150,100);
 
-	    BossCreated = true;
-	}    
 	if (count>100) { count=0;}
-		count++;
-    if (count % 10 ==0)
-		bs.shoot();
-	/*if (count>100) { count=0;}
 	count++;
 	if (count % 50 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,0,200,100,3,1));
+		ArrayE.add(new Enemy(x,-100,200,100,3,1));
 	    }
 	
 	if (count % 10 == 0 )
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,0,130,130,1,2));
-	    }*/
+		ArrayE.add(new Enemy(x,-60,60,60,1,2));
+	    }
     }
 
     public void createEnemy2() {
@@ -316,12 +321,12 @@ public class PlayState extends State{
 	count++;
 	if (count % 100==0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,0,200,100,3,1));
+		ArrayE.add(new Enemy(x,-100,200,100,3,1));
 	    }
 	
 	if (count % 2 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,0,130,130,1,2));
+		ArrayE.add(new Enemy(x,-60,60,60,1,2));
 	    }
     }
 
@@ -329,14 +334,14 @@ public class PlayState extends State{
 	if (count>1000) { count=0;}
 	count++;
 	
-	if (count % 50 == 0)
+	if (count % 20 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,0,200,100,3,1));
+		ArrayE.add(new Enemy(x,-100,200,100,3,1));
 	    }
 	
-	if (count % 4 == 0)
+	if (count % 5 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,0,130,130,1,2));
+		ArrayE.add(new Enemy(x,-60,60,60,1,2));
 	    }
 
     }
@@ -354,23 +359,56 @@ public class PlayState extends State{
 	if (count % 10 == 0)
 	    {   
 		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,0,130,130,1,2));
+		ArrayE.add(new Enemy(x,-60,60,60,1,2));
 	    }
 
     }
 
     public void createEnemy5() {
+	if (count>100) { count=0;}
+	count++;
 
 	if(bigFrogCreated == false) {
 	    ArrayE.add(new Enemy(0,-600,600,600,1000,4));
 	    bigFrogCreated = true;
 	}
 
+	if (count % 10 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		ArrayE.add(new Enemy(x,0,130,130,1,2));
+	    }
+
     }
 
     public void createEnemy6() {
-	if (count>100) { count=0;}
-	count++;
+   
+    	if(BossCreated == false) {
+	   		bs=new Boss(200,50,300,150,100);
+
+	    BossCreated = true;
+	}
+	
+	if (count>500) { count=0;}
+		count++;
+		if (count < 150) {
+		      if(count % 10 == 0) {
+			bs.shoot3(mc);	        
+		    }
+		}
+
+		else if(count < 300) {
+		    if(count % 4 == 0) {
+			bs.shoot2();	        
+		    }
+		}
+		
+		else {
+		    for(int i=0; i<20; i++) {
+			bs.shoot();
+	        
+		    }
+		}
 
     }
 

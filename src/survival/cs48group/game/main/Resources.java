@@ -30,7 +30,7 @@ public class Resources {
 		bomb=loadImage("killpart.png");
 		enemy2 = loadImage("niu2.png");
 		frog = loadImage("frog.png");
-	//	frog600 = loadImage("frog600.png");
+		frog600 = loadImage("frog600.png");
 	}
 	
 	
