@@ -108,21 +108,21 @@ public class MainCharacter {
 	//handle the bullet that main character create; shoot
 	public void shoot(){
 		if (powerLevel!=2)
-	    	PlayState.ArrayB.add(new Bullet(this.x+this.width/2,y,80,80,1,-24));
+	    	PlayState.ArrayB.add(new Bullet(this.x+this.width/2,y,40,80,1,-24));
 		if (powerLevel==2){
-		    PlayState.ArrayB.add(new Bullet(this.x+25+this.width/2,this.y,80,80,1,-24));
-		    PlayState.ArrayB.add(new Bullet(this.x-25+this.width/2,this.y,80,80,1,-24));
+		    PlayState.ArrayB.add(new Bullet(this.x+25+this.width/2,this.y,40,80,1,-24));
+		    PlayState.ArrayB.add(new Bullet(this.x-25+this.width/2,this.y,40,80,1,-24));
 		}
 
 		if (powerLevel >2) {
-		    PlayState.ArrayB.add(new Bullet(this.x+60+this.width/2,this.y,80,80,1,-24));
-		    PlayState.ArrayB.add(new Bullet(this.x-60+this.width/2,this.y,80,80,1,-24));
+		    PlayState.ArrayB.add(new Bullet(this.x+60+this.width/2,this.y,40,80,1,-24));
+		    PlayState.ArrayB.add(new Bullet(this.x-60+this.width/2,this.y,40,80,1,-24));
 		}
 		if (powerLevel==4)
 			{
 				
-		    	PlayState.ArrayB.add(new Bullet(this.x+60+this.width/2,this.y,50,55,2,33));
-		    	PlayState.ArrayB.add(new Bullet(this.x-60+this.width/2,this.y,50,55,2,-33));
+		    	PlayState.ArrayB.add(new Bullet(this.x+60+this.width/2,this.y,30,60,2,33));
+		    	PlayState.ArrayB.add(new Bullet(this.x-60+this.width/2,this.y,30,60,2,-33));
 			}
 	}
 

@@ -12,20 +12,24 @@ import survival.cs48group.game.main.GameMain;
 import survival.cs48group.game.main.Resources;
 import survival.cs48group.game.model.MainCharacter;
 import survival.cs48group.game.model.Bullet;
+import survival.cs48group.game.model.BulletE;
 import survival.cs48group.game.model.Enemy;
 import survival.cs48group.game.model.Item;
-
+import survival.cs48group.game.model.Boss;
+import survival.cs48group.game.state.GameoverState;
 public class PlayState extends State{
 	private MainCharacter  mc;
+	private Boss bs;
 	//private int score = 0;
 	//private Font scoreFont;
     private static int count=0;
 	public static ArrayList<Bullet> ArrayB = new ArrayList<Bullet>();
 	public static ArrayList<Enemy> ArrayE = new ArrayList<Enemy>(); 
 	public static ArrayList<Item> ArrayI = new ArrayList<Item>();  
+	public static ArrayList<BulletE> ArrayBE = new ArrayList<BulletE>();
 	private static int bgp=-1024+GameMain.GAME_HEIGHT;
     public static int score, stage;
-    public boolean frogCreated, bigFrogCreated;
+    public boolean frogCreated, bigFrogCreated,BossCreated;
 
     public PlayState() {
 	super();
@@ -37,7 +41,7 @@ public class PlayState extends State{
 	//initialize the play state and create new main character object
 	@Override
 	public void initializeState() {
-		mc = new MainCharacter(GameMain.GAME_WIDTH/2,GameMain.GAME_HEIGHT,200,200);
+		mc = new MainCharacter(GameMain.GAME_WIDTH/2,GameMain.GAME_HEIGHT,120,120);
 		
 		//scoreFont = new Font("SansSerif", Font.BOLD, 25);
 	}
@@ -46,7 +50,9 @@ public class PlayState extends State{
 	@Override
 	public void updateState() {
 		mc.update();
-
+			for(int i=0; i<ArrayBE.size(); i++) {
+				ArrayBE.get(i).update();
+			}
 			for(int i=0; i<ArrayB.size(); i++) {
 				ArrayB.get(i).update();
 			}
@@ -58,7 +64,7 @@ public class PlayState extends State{
 		    }
 		    
 		if (bgp>=0)
-			bgp=-1200+GameMain.GAME_HEIGHT;
+			bgp=-2950+GameMain.GAME_HEIGHT;
 		bgp++;
 	}
 
@@ -71,6 +77,8 @@ public class PlayState extends State{
 	@Override
 	public void renderImages(Graphics g) {	
 		
+		if (BossCreated){
+		g.drawImage(Resources.boss,bs.getX(),bs.getY(),null);}
 		g.drawImage(Resources.background,0,bgp,null);
 
 			for (int i=0;i<ArrayE.size();i++){
@@ -125,6 +133,9 @@ public class PlayState extends State{
 				g.drawImage(Resources.bullet2, ArrayB.get(i1).getX(), ArrayB.get(i1).getY(), null);
 			    }
 			}
+
+			for (int i3=0;i3<ArrayBE.size();i3++)
+				g.drawImage(Resources.bulletE,ArrayBE.get(i3).getX(),ArrayBE.get(i3).getY(),null);
 
 			// draw item
 			for (int i2=0;i2<ArrayI.size();i2++) {
@@ -277,7 +288,17 @@ public class PlayState extends State{
 	}
 
     public void createEnemy1() {
+   
+    	if(BossCreated == false) {
+	   		bs=new Boss(200,50,300,150,100);
+
+	    BossCreated = true;
+	}    
 	if (count>100) { count=0;}
+		count++;
+    if (count % 10 ==0)
+		bs.shoot();
+	/*if (count>100) { count=0;}
 	count++;
 	if (count % 50 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
@@ -287,7 +308,7 @@ public class PlayState extends State{
 	if (count % 10 == 0 )
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
 		ArrayE.add(new Enemy(x,0,130,130,1,2));
-	    }
+	    }*/
     }
 
     public void createEnemy2() {
