@@ -25,11 +25,13 @@ public class PlayState extends State{
 	public static ArrayList<Item> ArrayI = new ArrayList<Item>();  
 	private static int bgp=-1024+GameMain.GAME_HEIGHT;
     public static int score, stage;
+    public boolean frogCreated, bigFrogCreated;
 
     public PlayState() {
 	super();
 	score = 0;
 	stage = 1;
+	frogCreated = false;
     }
 	
 	//initialize the play state and create new main character object
@@ -125,14 +127,17 @@ public class PlayState extends State{
 			}
 
 			// draw item
-			for (int i2=0;i2<ArrayI.size();i2++){
-				if (ArrayI.get(i2).getKind()==0)
-					g.drawImage(Resources.hpitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
-				if (ArrayI.get(i2).getKind()==1)
-					g.drawImage(Resources.bombitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
-
-				if (ArrayI.get(i2).getKind()==2)
-					g.drawImage(Resources.bulletitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
+			for (int i2=0;i2<ArrayI.size();i2++) {
+			    if (ArrayI.get(i2).getKind()==0){
+				g.drawImage(Resources.hpitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
+			    }
+			    if (ArrayI.get(i2).getKind()==1) {
+				g.drawImage(Resources.bombitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
+			    }
+			    if (ArrayI.get(i2).getKind()==2) {
+				g.drawImage(Resources.bulletitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
+			    }
+       
 			}
 
 			// create enemy
@@ -144,12 +149,70 @@ public class PlayState extends State{
 			    createEnemy2();	
 			}
 
+			if(PlayState.stage == 3) {
+			    createEnemy3();	
+			}
+
+			if(PlayState.stage == 4) {
+			    createEnemy4();	
+			}
+
+			if(PlayState.stage == 5) {
+			    createEnemy5();	
+			}
+
+			if(PlayState.stage == 6) {
+			    createEnemy6();	
+			}
+
+			if(PlayState.stage == 7) {
+			    createEnemy7();	
+			}
+
+			if(PlayState.stage == 8) {
+			    createEnemy8();	
+			}
+			
+			if(PlayState.stage == 9) {
+			    createEnemy9();	
+			}
+
+			if(PlayState.stage == 10) {
+			    createEnemy10();	
+			}
+
+			
+
 			// draw enemy
 			for (int i1=0; i1<ArrayE.size();i1++){
 			    if(ArrayE.get(i1).kind == 1) {
 				g.drawImage(Resources.enemies,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
-			     if(ArrayE.get(i1).kind == 2) {
+			    if(ArrayE.get(i1).kind == 2) {
+				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
+			    if(ArrayE.get(i1).kind == 3) {
+				g.drawImage(Resources.frog,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    } 
+			    if(ArrayE.get(i1).kind == 4) {
+				g.drawImage(Resources.frog600,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
+			    if(ArrayE.get(i1).kind == 5) {
+				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
+			    if(ArrayE.get(i1).kind == 6) {
+				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
+			    if(ArrayE.get(i1).kind == 7) {
+				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
+			    if(ArrayE.get(i1).kind == 8) {
+				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
+			    if(ArrayE.get(i1).kind == 9) {
+				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
+			    if(ArrayE.get(i1).kind == 10) {
 				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
 			}
@@ -193,7 +256,7 @@ public class PlayState extends State{
 			setCurrentState(new MenuState());
 		}
 		else if (k.getKeyCode() == KeyEvent.VK_F2) {
-       
+		    this.score += 10;
 		}
 	}
 	
@@ -216,12 +279,12 @@ public class PlayState extends State{
     public void createEnemy1() {
 	if (count>100) { count=0;}
 	count++;
-	if (count % 50==0)
+	if (count % 50 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
 		ArrayE.add(new Enemy(x,0,200,100,3,1));
 	    }
 	
-	if (count > 80)
+	if (count % 10 == 0 )
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
 		ArrayE.add(new Enemy(x,0,130,130,1,2));
 	    }
@@ -235,10 +298,83 @@ public class PlayState extends State{
 		ArrayE.add(new Enemy(x,0,200,100,3,1));
 	    }
 	
-	if (count > 50)
+	if (count % 2 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
 		ArrayE.add(new Enemy(x,0,130,130,1,2));
 	    }
+    }
+
+    public void createEnemy3() {
+	if (count>1000) { count=0;}
+	count++;
+	
+	if (count % 50 == 0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		ArrayE.add(new Enemy(x,0,200,100,3,1));
+	    }
+	
+	if (count % 4 == 0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		ArrayE.add(new Enemy(x,0,130,130,1,2));
+	    }
+
+    }
+
+    public void createEnemy4() {
+	if (count>1000) { count=0;}
+	count++;
+	
+	if(frogCreated == false) {
+	    ArrayE.add(new Enemy(400,-250,250,250,150,3));
+	    ArrayE.add(new Enemy(100,-250,250,250,150,3));
+	    ArrayE.add(new Enemy(700,-250,250,250,150,3));
+	    frogCreated = true;
+	}
+	if (count % 10 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		ArrayE.add(new Enemy(x,0,130,130,1,2));
+	    }
+
+    }
+
+    public void createEnemy5() {
+
+	if(bigFrogCreated == false) {
+	    ArrayE.add(new Enemy(0,-600,600,600,1000,4));
+	    bigFrogCreated = true;
+	}
+
+    }
+
+    public void createEnemy6() {
+	if (count>100) { count=0;}
+	count++;
+
+    }
+
+    public void createEnemy7() {
+	if (count>100) { count=0;}
+	count++;
+
+    }
+
+    public void createEnemy8() {
+	if (count>100) { count=0;}
+	count++;
+
+    }
+
+    public void createEnemy9() {
+	if (count>100) { count=0;}
+	count++;
+
+    }
+
+    public void createEnemy10() {
+	if (count>100) { count=0;}
+	count++;
+
     }
 
 	

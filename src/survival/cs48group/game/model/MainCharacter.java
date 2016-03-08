@@ -24,7 +24,7 @@ public class MainCharacter {
 		this.width = width;
 		this.height= height;
 		this.bombNum = 1;
-		rect =new Rectangle(x,y,width,height);
+		rect =new Rectangle(x+width/10*2,y+height/10*2,width/10*6,height/10*6);
 		VelX=0;
 		VelY=0;
 	}
@@ -51,7 +51,7 @@ public class MainCharacter {
 	
 	//update the rectangle under the main character's image
 	private void updateRect(){
-		rect.setBounds(x,y,width,height);
+		rect.setBounds(x+width/10*2,y+height/10*2,width/10*6,height/10*6);
 		
 	}
 	
@@ -156,7 +156,9 @@ public class MainCharacter {
 		    PlayState.ArrayE.remove(a);
 		    this.powerLevel--;
 		    if (this.hp==-1){
-
+			PlayState.ArrayE = new ArrayList<Enemy>();
+			PlayState.ArrayI = new ArrayList<Item>();
+			PlayState.ArrayB = new ArrayList<Bullet>();
 		    	GameMain.sGame.setCurrentState(new GameoverState());
 		    }
 		  

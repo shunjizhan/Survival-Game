@@ -18,14 +18,31 @@ public class Enemy {
 			this.hp=hp;
 			this.width = width;
 			this.height= height;
-			this.kind = kind;
-			rect =new Rectangle(x,y,width,height);
-			if(kind == 1) {
-			    VelX= 0 + (int)(Math.random()*8 - 4); VelY= 2;
-			}
+			this.kind = kind;		    
+			rect =new Rectangle(x+width/10*2,y+height/10*2,width/10*6,height/10*6);
 			
+			// bat
+			if(kind == 1) {
+			    VelX= 0 + (int)(Math.random()*8 - 4);
+			    VelY= 2;
+			}
+
+			// fast
 			if(kind == 2) {
-			VelX= 0; VelY= 5;
+			    VelX= 0;
+			    VelY= 5;
+			}
+
+			// frog
+			if(kind == 3) {
+			    VelX= 0;
+			    VelY= 1;
+			}
+
+			// big frog
+			if(kind == 4) {
+			    VelX= 0;
+			    VelY= 5;
 			}
 			
 			
@@ -43,10 +60,7 @@ public class Enemy {
 			}
 			
 			
-			if (y<0){
-				y=0;
-			}
-			else if (y+height> GameMain.GAME_HEIGHT){
+			if (y > GameMain.GAME_HEIGHT){
 				PlayState.ArrayE.remove(this);
 			}
 			updateRect();
@@ -60,8 +74,7 @@ public class Enemy {
 		
 		//update the rectangle
 		private void updateRect(){
-			rect.setBounds(x,y,width,height);
-			
+			rect.setBounds(x+width/10*2,y+height/10*2,width/10*6,height/10*6);			
 		}
 
 	

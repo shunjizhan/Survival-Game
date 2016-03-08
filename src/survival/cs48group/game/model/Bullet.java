@@ -47,31 +47,42 @@ public class Bullet {
 	}
 	
 	//handle with the collision between enemies and bullets
-	public void onCollideWith(Enemy a){
+	public void onCollideWith(Enemy a) {
 		if (this.getRect().intersects(a.getRect()))
-		   {PlayState.ArrayB.remove(this);
-		   	a.hp--;
-		   	if (a.hp<0)
-		   		{
-				    int i=(int) (Math.random() * 5);
-				    if ((0==i) || (i==1) || (i==2))
-					{
-					    PlayState.ArrayI.add(new Item(a.getX(),a.getY(),80,80,i));
-					}
-						    
-				    PlayState.ArrayE.remove(a);
-				    PlayState.score++;
-				    	if(PlayState.score % 50 == 0) {
-					    PlayState.stage++;
-					    if(PlayState.stage > 2) {
-						PlayState.stage = 2;
-					    }
-					    System.out.println("stage" +  PlayState.stage);
-					}
-				}
-		   
-		   }
-	}	
+		   {
+		       PlayState.ArrayB.remove(this);
+		       a.hp--;
+		       if (a.hp <= 0)
+			   {
+			       int i=(int) (Math.random() * 30);
+			       if ((0==i) || (i==1) || (i==2))
+				   {
+				       PlayState.ArrayI.add(new Item(a.getX(),a.getY(),80,80,i));
+				   }
+			       
+			       PlayState.ArrayE.remove(a);
+			       PlayState.score++;
+			       if(PlayState.score == 30) {
+				   PlayState.stage = 2;
+				   System.out.println("stage" +  PlayState.stage);
+			       }
+			       if(PlayState.score == 100) {
+				   PlayState.stage = 3;
+				   System.out.println("stage" +  PlayState.stage);
+			       }
+			       if(PlayState.score == 150) {
+				   PlayState.stage = 4;
+				   System.out.println("stage" +  PlayState.stage);
+			       }
+			       if(PlayState.score == 200) {
+				   PlayState.stage = 5;
+				   System.out.println("stage" +  PlayState.stage);
+			       }
+			       
+			   }
+		   }		
+	}
+	
 
 	
 	

@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class Resources {
 	
-    public static BufferedImage welcome, flight, bullet,bullet2,background,enemies,hpitem,bulletitem,bombitem,hp,bomb,enemy2;
+    public static BufferedImage welcome, flight, bullet,bullet2,background,enemies,hpitem,bulletitem,bombitem,hp,bomb,enemy2,frog,frog600;
 	public static AudioClip hit;
 	
 	//load all the images and sound for the game
@@ -26,6 +26,8 @@ public class Resources {
 		hp=loadImage("hppart2.png");
 		bomb=loadImage("bomb.png");
 		enemy2 = loadImage("enemy4.png");
+		frog = loadImage("frog.png");
+		frog600 = loadImage("frog600.png");
 	}
 	
 	
