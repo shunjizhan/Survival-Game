@@ -9,19 +9,27 @@ public class Enemy {
 		private final int Move_Speed=1;
 		private Rectangle rect;
 		public boolean isDead=false;
-		public int hp;
+    public int hp, kind;
+    
 		//constructor for enemy object
-		public Enemy(int x, int y, int width, int height, int hp){
+    public Enemy(int x, int y, int width, int height, int hp, int kind){
 			this.x = x;
 			this.y = y;
 			this.hp=hp;
 			this.width = width;
 			this.height= height;
+			this.kind = kind;
 			rect =new Rectangle(x,y,width,height);
-			VelX=0;
-			VelY= Move_Speed + +(int)(Math.random()*3);
+			if(kind == 1) {
+			    VelX= 0 + (int)(Math.random()*8 - 4); VelY= 2;
+			}
 			
-		}
+			if(kind == 2) {
+			VelX= 0; VelY= 5;
+			}
+			
+			
+    }
 		
 		//update the enemy object
 		public void update() {		

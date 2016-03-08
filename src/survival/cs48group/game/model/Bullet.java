@@ -14,8 +14,8 @@ public class Bullet {
 	
 	//constructor for the bullet (fire ball)
     public Bullet(int x, int y, int width, int height, int kind){
-		this.x = x + width  +6;
-		this.y = y + height ;
+		this.x = x - width/2;
+		this.y = y - height ;
 		this.width = width;
 		this.height= height;
 		this.kind = kind;
@@ -53,6 +53,14 @@ public class Bullet {
 					}
 						    
 				    PlayState.ArrayE.remove(a);
+				    PlayState.score++;
+				    	if(PlayState.score % 50 == 0) {
+					    PlayState.stage++;
+					    if(PlayState.stage > 2) {
+						PlayState.stage = 2;
+					    }
+					    System.out.println("stage" +  PlayState.stage);
+					}
 				}
 		   
 		   }

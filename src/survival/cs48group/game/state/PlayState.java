@@ -24,6 +24,13 @@ public class PlayState extends State{
 	public static ArrayList<Enemy> ArrayE = new ArrayList<Enemy>(); 
 	public static ArrayList<Item> ArrayI = new ArrayList<Item>();  
 	private static int bgp=-1024+GameMain.GAME_HEIGHT;
+    public static int score, stage;
+
+    public PlayState() {
+	super();
+	score = 0;
+	stage = 1;
+    }
 	
 	//initialize the play state and create new main character object
 	@Override
@@ -107,7 +114,7 @@ public class PlayState extends State{
 
 			g.drawImage(Resources.flight, mc.getX(), mc.getY(), null);
 			
-		
+			// draw bullet
 			for(int i1=0; i1<ArrayB.size(); i1++) {
 			    if(ArrayB.get(i1).getKind() == 1) {
 				g.drawImage(Resources.bullet, ArrayB.get(i1).getX(), ArrayB.get(i1).getY(), null);
@@ -116,7 +123,8 @@ public class PlayState extends State{
 				g.drawImage(Resources.bullet2, ArrayB.get(i1).getX(), ArrayB.get(i1).getY(), null);
 			    }
 			}
-	
+
+			// draw item
 			for (int i2=0;i2<ArrayI.size();i2++){
 				if (ArrayI.get(i2).getKind()==0)
 					g.drawImage(Resources.hpitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
@@ -126,15 +134,24 @@ public class PlayState extends State{
 				if (ArrayI.get(i2).getKind()==2)
 					g.drawImage(Resources.bulletitem,ArrayI.get(i2).getX(),ArrayI.get(i2).getY(),null);
 			}
-		
-			if (count>10000) { count=0;}
-			count++;
-			if (count % 25==0)
-			{   int x=(int) (Math.random()*GameMain.GAME_WIDTH);
-				ArrayE.add(new Enemy(x,0,200,100,3));
+
+			// create enemy
+			if(PlayState.stage == 1) {
+			    createEnemy1();	
 			}
+
+			if(PlayState.stage == 2) {
+			    createEnemy2();	
+			}
+
+			// draw enemy
 			for (int i1=0; i1<ArrayE.size();i1++){
+			    if(ArrayE.get(i1).kind == 1) {
 				g.drawImage(Resources.enemies,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
+			     if(ArrayE.get(i1).kind == 2) {
+				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+			    }
 			}
 	}
 	
@@ -195,6 +212,35 @@ public class PlayState extends State{
 		}
 		
 	}
+
+    public void createEnemy1() {
+	if (count>100) { count=0;}
+	count++;
+	if (count % 50==0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		ArrayE.add(new Enemy(x,0,200,100,3,1));
+	    }
+	
+	if (count > 80)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		ArrayE.add(new Enemy(x,0,130,130,1,2));
+	    }
+    }
+
+    public void createEnemy2() {
+	if (count>100) { count=0;}
+	count++;
+	if (count % 100==0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		ArrayE.add(new Enemy(x,0,200,100,3,1));
+	    }
+	
+	if (count > 50)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		ArrayE.add(new Enemy(x,0,130,130,1,2));
+	    }
+    }
+
 	
 	
 }

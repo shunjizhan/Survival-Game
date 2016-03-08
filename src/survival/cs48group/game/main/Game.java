@@ -21,7 +21,7 @@ public class Game extends JPanel implements Runnable{
 	private Thread gameThread;
 	private volatile boolean running;
 	
-	private volatile State currentState;
+	public State currentState;
 	
 	private InputHelper inputHelper;
 	
