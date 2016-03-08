@@ -107,17 +107,23 @@ public class MainCharacter {
 	
 	//handle the bullet that main character create; shoot
 	public void shoot(){
-	    PlayState.ArrayB.add(new Bullet(x,y-20,50,55,1));
-		if (powerLevel > 1){
-		    PlayState.ArrayB.add(new Bullet(x+50,y-20,50,55,2));
-		    PlayState.ArrayB.add(new Bullet(x-50,y-20,50,55,2));
+		if (powerLevel!=2)
+	    	PlayState.ArrayB.add(new Bullet(this.x+this.width/2,y,80,80,1,-24));
+		if (powerLevel==2){
+		    PlayState.ArrayB.add(new Bullet(this.x+25+this.width/2,this.y,80,80,1,-24));
+		    PlayState.ArrayB.add(new Bullet(this.x-25+this.width/2,this.y,80,80,1,-24));
 		}
 
-		if (powerLevel > 2) {
-		    PlayState.ArrayB.add(new Bullet(x+100,y-20,50,55,1));
-		    PlayState.ArrayB.add(new Bullet(x-100,y-20,50,55,1));
+		if (powerLevel >2) {
+		    PlayState.ArrayB.add(new Bullet(this.x+60+this.width/2,this.y,80,80,1,-24));
+		    PlayState.ArrayB.add(new Bullet(this.x-60+this.width/2,this.y,80,80,1,-24));
 		}
-
+		if (powerLevel==4)
+			{
+				
+		    	PlayState.ArrayB.add(new Bullet(this.x+60+this.width/2,this.y,50,55,2,33));
+		    	PlayState.ArrayB.add(new Bullet(this.x-60+this.width/2,this.y,50,55,2,-33));
+			}
 	}
 
     	public void bomb(){
@@ -148,8 +154,9 @@ public class MainCharacter {
 		if (this.getRect().intersects(a.getRect()))
 		   {this.hp--;
 		    PlayState.ArrayE.remove(a);
-		    this.powerLevel = 1;
+		    this.powerLevel--;
 		    if (this.hp==-1){
+
 		    	GameMain.sGame.setCurrentState(new GameoverState());
 		    }
 		  
@@ -166,7 +173,8 @@ public class MainCharacter {
 		    else if (i==1)
 		    	{this.getBomb();}
 		    else if (i==2)
-		    	{this.powerLevel++;}
+		    	{    if (this.powerLevel<4)
+		    		 this.powerLevel++;}
 		    PlayState.ArrayI.remove(a);
 
 		   }

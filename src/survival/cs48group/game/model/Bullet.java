@@ -6,27 +6,34 @@ import survival.cs48group.game.main.GameMain;
 import survival.cs48group.game.state.PlayState;
 
 public class Bullet {
-	public int x, y, width, height, vel;
-	private static int Move_Speed=-32;
+	public int x, y, width, height, vel,velx;
+
 	public Rectangle rect;
 	public boolean isDead=false;
     public int kind;
 	
 	//constructor for the bullet (fire ball)
-    public Bullet(int x, int y, int width, int height, int kind){
+    public Bullet(int x, int y, int width, int height, int kind,int speed){
 		this.x = x - width/2;
 		this.y = y - height ;
 		this.width = width;
 		this.height= height;
 		this.kind = kind;
 		rect =new Rectangle(x,y,width,height);
-		vel=Move_Speed;
+		
+		vel=speed;
+		if (speed>0)
+		vel=-speed; 
+		velx=0;
+		if (kind==2){
+			velx=speed/3;
+			}
 	}
 	
 	//update the animation of the bullets(fire balls)
 	public void update() {
 		y += vel;
-		/*x += -100+(int)(Math.random()*200);*/
+	    x += velx;
 		if (y<-height){
 			PlayState.ArrayB.remove(this);
 		}
