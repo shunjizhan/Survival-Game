@@ -43,14 +43,7 @@ public class Enemy {
 			}
 			updateRect();
 		}
-		
-		//set isDead to true if collision happens
-		public void disapear(){
-	    	isDead=true;
-	    	int i=(int) (Math.random()*30);
-	    	if ((0==i) || (i==1) || (i==2))
-	    	 {PlayState.ArrayI.add(new Item(this.getX(),this.getY(),80,80,i));}
-		}
+			    	
 		
 		//get the rectangle under the image of the enemy
 		public Rectangle getRect() {
@@ -62,9 +55,8 @@ public class Enemy {
 			rect.setBounds(x,y,width,height);
 			
 		}
-		
-	
 
+	
 	
 		//get the x coordinate
 		public int getX(){

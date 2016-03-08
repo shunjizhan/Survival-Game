@@ -20,8 +20,8 @@ public class Item {
 			this.height= height;
 			this.kind=kind;
 			rect =new Rectangle(x,y,width,height);
-			VelX=4;
-			VelY=5;
+			VelX=(int) (Math.random() * 18 - 9);
+			VelY=5 + (int)(Math.random() * 6 - 3);
 		}
 		
 		//update the enemy object

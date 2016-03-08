@@ -38,14 +38,6 @@ public class PlayState extends State{
 	public void updateState() {
 		mc.update();
 
-	/*	for(int i=0; i<ArrayB.size(); i++) {
-			if (ArrayB.get(i).isDead)
-				ArrayB.remove(ArrayB.get(i));
-		}
-	    for (int i=0; i<ArrayE.size();i++){
-	    	if (ArrayE.get(i).isDead)
-				ArrayE.remove(ArrayE.get(i));
-	    }*/
 			for(int i=0; i<ArrayB.size(); i++) {
 				ArrayB.get(i).update();
 			}

@@ -45,7 +45,15 @@ public class Bullet {
 		   {PlayState.ArrayB.remove(this);
 		   	a.hp--;
 		   	if (a.hp<0)
-		   		{PlayState.ArrayE.remove(a);}
+		   		{
+				    int i=(int) (Math.random() * 5);
+				    if ((0==i) || (i==1) || (i==2))
+					{
+					    PlayState.ArrayI.add(new Item(a.getX(),a.getY(),80,80,i));
+					}
+						    
+				    PlayState.ArrayE.remove(a);
+				}
 		   
 		   }
 	}	
