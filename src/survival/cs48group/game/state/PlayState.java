@@ -216,22 +216,19 @@ public class PlayState extends State{
 				g.drawImage(Resources.frog600,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
 			    if(ArrayE.get(i1).kind == 5) {
-				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+				g.drawImage(Resources.niu1,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
 			    if(ArrayE.get(i1).kind == 6) {
-				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+				g.drawImage(Resources.fire,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
 			    if(ArrayE.get(i1).kind == 7) {
-				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+				g.drawImage(Resources.gao,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
 			    if(ArrayE.get(i1).kind == 8) {
-				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+				g.drawImage(Resources.tu,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
 			    if(ArrayE.get(i1).kind == 9) {
-				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
-			    }
-			    if(ArrayE.get(i1).kind == 10) {
-				g.drawImage(Resources.enemy2,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
+				g.drawImage(Resources.yu,ArrayE.get(i1).getX(),ArrayE.get(i1).getY(),null);
 			    }
 			}
 
@@ -307,12 +304,12 @@ public class PlayState extends State{
 	count++;
 	if (count % 50 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,-100,200,100,3,1));
+		createNiao(x);
 	    }
 	
 	if (count % 10 == 0 )
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,-60,60,60,1,2));
+		createNiu2(x);
 	    }
     }
 
@@ -321,12 +318,12 @@ public class PlayState extends State{
 	count++;
 	if (count % 100==0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,-100,200,100,3,1));
+	        createNiao(x);
 	    }
 	
 	if (count % 2 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,-60,60,60,1,2));
+	        createNiu2(x);
 	    }
     }
 
@@ -336,12 +333,12 @@ public class PlayState extends State{
 	
 	if (count % 20 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,-100,200,100,3,1));
+	        createNiao(x);
 	    }
 	
 	if (count % 5 == 0)
 	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,-60,60,60,1,2));
+		createNiu2(x);
 	    }
 
     }
@@ -351,15 +348,15 @@ public class PlayState extends State{
 	count++;
 	
 	if(frogCreated == false) {
-	    ArrayE.add(new Enemy(400,-250,250,250,150,3));
-	    ArrayE.add(new Enemy(100,-250,250,250,150,3));
-	    ArrayE.add(new Enemy(700,-250,250,250,150,3));
+	    createFrog(100);
+	    createFrog(400);
+	    createFrog(700);
 	    frogCreated = true;
 	}
 	if (count % 10 == 0)
 	    {   
 		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
-		ArrayE.add(new Enemy(x,-60,60,60,1,2));
+	        createNiu2(x);
 	    }
 
     }
@@ -369,7 +366,7 @@ public class PlayState extends State{
 	count++;
 
 	if(bigFrogCreated == false) {
-	    ArrayE.add(new Enemy(0,-600,600,600,1000,4));
+	    createBigFrog(200);
 	    bigFrogCreated = true;
 	}
 
@@ -382,8 +379,33 @@ public class PlayState extends State{
     }
 
     public void createEnemy6() {
-   
-    	if(BossCreated == false) {
+	if (count>1000) { count=0;}
+	count++;
+	int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	
+	if(count % 20 == 0) {
+	    createNiu1(x);
+	}
+
+	if(count % 30 == 0) {
+	    createGao(x);
+	}
+
+	if(count % 50 == 0) {
+	    createFire(x);
+	}
+
+	if(count % 40 == 0) {
+	    createTu(x);
+	}
+	
+	if(count % 10 == 0) {
+	    createYu(x);
+	}
+    }
+
+    public void createEnemy7() {
+	    	if(BossCreated == false) {
 	   		bs=new Boss(200,50,300,150,100);
 
 	    BossCreated = true;
@@ -412,12 +434,6 @@ public class PlayState extends State{
 
     }
 
-    public void createEnemy7() {
-	if (count>100) { count=0;}
-	count++;
-
-    }
-
     public void createEnemy8() {
 	if (count>100) { count=0;}
 	count++;
@@ -436,6 +452,40 @@ public class PlayState extends State{
 
     }
 
-	
+    public void createNiao(int x) {
+	ArrayE.add(new Enemy(x,-100,200,100,3,1));
+    }
+
+    public void createNiu2(int x) {
+	ArrayE.add(new Enemy(x,-60,60,60,1,2));
+    }
+    
+    public void createFrog(int x) {
+	ArrayE.add(new Enemy(x,-250,250,250,150,3));
+    }
+    
+    public void createBigFrog(int x) {
+	ArrayE.add(new Enemy(x,-600,600,600,1000,4));
+    }
+    
+    public void createNiu1(int x) {
+	ArrayE.add(new Enemy(x,-80,100,80,3,5));
+    }
+    
+    public void createFire(int x) {
+	ArrayE.add(new Enemy(x,-150,100,150,5,6));
+    }
+    
+    public void createGao(int x) {	
+	ArrayE.add(new Enemy(x,-160,80,160,4,7));
+    }
+    
+    public void createTu(int x) {
+	ArrayE.add(new Enemy(x,-80,80,80,2,8));
+    }
+    
+    public void createYu(int x) {
+	ArrayE.add(new Enemy(x,-40,40,40,1,9));
+    }
 	
 }

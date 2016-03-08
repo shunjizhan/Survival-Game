@@ -82,6 +82,10 @@ public class Bullet {
 				   PlayState.stage = 6;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
+			       if(PlayState.score == 350) {
+				   PlayState.stage = 7;
+				   System.out.println("stage" +  PlayState.stage);
+			       }
 			       
 			   }
 		   }		

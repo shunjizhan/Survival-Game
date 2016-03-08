@@ -21,7 +21,7 @@ public class Enemy {
 			this.kind = kind;		    
 			rect =new Rectangle(x+width/10*2,y+height/10*2,width/10*6,height/10*6);
 			
-			// bat
+			// niao
 			if(kind == 1) {
 			    VelX= 0 + (int)(Math.random()*8 - 4);
 			    VelY= 2;
@@ -30,7 +30,7 @@ public class Enemy {
 			// fast
 			if(kind == 2) {
 			    VelX= 0;
-			    VelY= 5;
+			    VelY= 3;
 			}
 
 			// frog
@@ -43,6 +43,36 @@ public class Enemy {
 			if(kind == 4) {
 			    VelX= 0;
 			    VelY= 5;
+			}
+
+			// niu1
+			if(kind == 5) {
+			    VelX= 5;
+			    VelY= 2;
+			}
+
+			// fire
+			if(kind == 6) {
+			    VelX= (int)Math.random() * 8 - 4;
+			    VelY= 2;
+			}
+
+			// gao
+			if(kind == 7) {
+			    VelX= (int)Math.random() * 8 - 4;;
+			    VelY= 4;
+			}
+
+			// tu
+			if(kind == 8) {
+			    VelX= (int)Math.random() * 10 - 5;;
+			    VelY= 3;
+			}
+
+			// yu
+			if(kind == 9) {
+			    VelX= (int)Math.random() * 18 - 9;;
+			    VelY= 6;
 			}
 			
 			
