@@ -20,16 +20,18 @@ import survival.cs48group.game.state.GameoverState;
 public class PlayState extends State{
 	public static MainCharacter  mc;
 	private Boss bs;
+	private static int aa=0;
 	//private int score = 0;
 	//private Font scoreFont;
     private static int count=0;
+    public boolean frogCreated2;
 	public static ArrayList<Bullet> ArrayB = new ArrayList<Bullet>();
 	public static ArrayList<Enemy> ArrayE = new ArrayList<Enemy>(); 
 	public static ArrayList<Item> ArrayI = new ArrayList<Item>();  
 	public static ArrayList<BulletE> ArrayBE = new ArrayList<BulletE>();
 	private static int bgp=-1024+GameMain.GAME_HEIGHT;
     public static int score, stage;
-    public boolean frogCreated, bigFrogCreated,BossCreated,frogCreated2,birdCreated,gaoCreated,fireCreated;
+    public boolean frogCreated, bigFrogCreated,BossCreated;
 
     public PlayState() {
 	super();
@@ -62,7 +64,9 @@ public class PlayState extends State{
 		    for (int i=0; i<ArrayI.size();i++){
 		    	ArrayI.get(i).update();
 		    }
-		    
+		    if (BossCreated){
+		    bs.update();
+		}
 		if (bgp>=0)
 			bgp=-2950+GameMain.GAME_HEIGHT;
 		bgp++;
@@ -79,9 +83,11 @@ public class PlayState extends State{
 	    if(mc.superPower == true) {
 		mc.shoot();
 	    }
+	    /*
 	    if(count % 5 == 0) {
 		mc.shoot();
 	    }
+	    */
 		g.drawImage(Resources.background,0,bgp,null);
 		if (BossCreated){
 		g.drawImage(Resources.boss,bs.getX(),bs.getY(),null);
@@ -202,6 +208,7 @@ public class PlayState extends State{
 			    createEnemy10();	
 			}
 
+
 			if(PlayState.stage == 11) {
 			    createEnemy11();	
 			}
@@ -217,23 +224,20 @@ public class PlayState extends State{
 			if(PlayState.stage == 14) {
 			    createEnemy14();	
 			}
-			
+
 			if(PlayState.stage == 15) {
 			    createEnemy15();	
 			}
-			
+
 			if(PlayState.stage == 16) {
 			    createEnemy16();	
 			}
-			
+
 			if(PlayState.stage == 17) {
 			    createEnemy17();	
 			}
 			
-			
-
-			
-
+	
 			// draw enemy
 			for (int i1=0; i1<ArrayE.size();i1++){
 			    if(ArrayE.get(i1).kind == 1) {
@@ -313,6 +317,10 @@ public class PlayState extends State{
 			mc.superPower = true;
 		    }
 		}
+		else if (k.getKeyCode() == KeyEvent.VK_V) {
+			PlayState.score = 798;
+			mc.powerLevel = 5;
+		}
 	}
 	
 	//handle key release event
@@ -331,7 +339,7 @@ public class PlayState extends State{
 		
 	}
 
-    public void createEnemy1() {
+      public void createEnemy1() {
 
 	if (count>100) { count=0;}
 	count++;
@@ -505,7 +513,7 @@ public class PlayState extends State{
 	count++;
 
 	if(count % 100 == 0) {
-	    for(int i=0; i<600; i+=100) {
+	    for(int i=0; i<900; i+=100) {
 		createNiao(i);
 	    }
 	}
@@ -517,7 +525,7 @@ public class PlayState extends State{
 	count++;
 
 	if(count % 50 == 0) {
-	    for(int i=0; i<650; i+=60) {
+	    for(int i=0; i<900; i+=60) {
 		createNiu2(i);
 	    }
 	}
@@ -536,7 +544,7 @@ public class PlayState extends State{
 	count++;
 
 	if(count % 88 == 0) {
-	    for(int i=0; i<650; i+=100) {
+	    for(int i=0; i<900; i+=100) {
 		createFire(i);
 	    }
 	}
@@ -559,33 +567,37 @@ public class PlayState extends State{
     public void createEnemy15() {
 	if (count>100) { count=0;}
 	count++;
-
+if(count % 50 == 0) {
 	    for(int i=10; i<900; i+=80) {
 		createGao(i);
 	    }
 	}
-	
-    }
+	}
 
     public void createEnemy16() {
 	if (count>100) { count=0;}
 	count++;
-
-	if(count % 2 == 0) {
-	    for(int i=0; i<950; i+=40) {
+	if(count % 20 == 0) {
+	    for(int i=10; i<900; i+=40) {
 		createYu(i);
 	    }
 	}
+	}
 	
-    }
+    
 
     public void createEnemy17() {
-	if (count>100) { count=0;}
+	if (count>1000) { count=0;}
 	count++;
 
-	createBoss();
+	if(PlayState.ArrayE.isEmpty()) {
+		createBoss();
+	}
 
     }
+
+
+
 
 
     
@@ -628,36 +640,58 @@ public class PlayState extends State{
 
     public void createBoss() {
 	if(BossCreated == false) {
-	    bs=new Boss(200,50,300,150,100);
-
+	    Resources.back.stop();
+	    Resources.bossSound.play();
+	    bs=new Boss(350,-150,300,150,10000);
+	    bs.bossgetposition=false;
 	    BossCreated = true;
 	}
+	
 	for (int i=0;i<ArrayB.size();i++){
 		bs.getdamage(ArrayB.get(i));
-
-	}
 	
-	if (count>500) { count=0;}
-		count++;
-		if (count < 150) {
-		      if(count % 10 == 0) {
-			bs.shoot3(mc);	        
-		    }
+	}
+	if (bs.bossgetposition){
+
+		if (bs.hp > 9800) {
+			
+		if (count < 500) {
+		      if((count % 10 == 0) && (aa<6)) {
+				bs.shoot3(mc);}
+				aa++;
+				if (aa>10) {aa=0;}	        
+		    
 		}
 
-		else if(count < 300) {
-		    if(count % 4 == 0) {
-			bs.shoot2();	        
+		else if(count < 800 ) {
+			bs.stop();
+		    if(count % 10 == 0) {
+		    	for (int i=0;i<20;i++)
+				bs.shoot();	        
 		    }
 		}
 		
-		else {
-		    for(int i=0; i<20; i++) {
-			bs.shoot();
-	        
-		    }
+		else { bs.start();
+			if (count % 10==0){
+			   if (aa % 9==0){
+		    	 bs.shoot2();
+	        	
+		 	   }
+			}
+		    aa++;
+		    if (aa>10) {aa=0;}
+		
 		}
+	  }
 
-    }
-	
+	  else {
+	  	bs.shoot();	
+	  	bs.shoot2();	
+	  	bs.shoot3(mc);	
+	  }
+	  }
+
+	}
+    
 }
+

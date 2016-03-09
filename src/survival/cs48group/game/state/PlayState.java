@@ -316,7 +316,8 @@ public class PlayState extends State{
 		    }
 		}
 		else if (k.getKeyCode() == KeyEvent.VK_V) {
-			PlayState.score = 798;
+		    mc.powerLevel = 4;
+		    PlayState.score = 798;
 		}
 	}
 	
@@ -650,7 +651,7 @@ if(count % 50 == 0) {
 	}
 	if (bs.bossgetposition){
 
-		if (bs.hp > 9800) {
+		if (bs.hp > 9300) {
 			
 		if (count < 500) {
 		      if((count % 10 == 0) && (aa<6)) {

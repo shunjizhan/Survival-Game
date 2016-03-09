@@ -49,10 +49,6 @@ public class BulletE {
 		if (this.getRect().intersects(a.getRect()))
 		   {PlayState.ArrayBE.remove(this);
 		   	a.hp--;
-		   	a.powerLevel--;
-		   	if(a.powerLevel < 1) {
-		   		a.powerLevel = 1;
-		   	}
 		   	
 		    if (a.hp==-1){
 		    	PlayState.ArrayE = new ArrayList<Enemy>();
