@@ -50,6 +50,10 @@ public class BulletE {
 		   {PlayState.ArrayBE.remove(this);
 		   	a.hp--;
 		   	a.powerLevel--;
+		   	if(a.powerLevel < 1) {
+		   		a.powerLevel = 1;
+		   	}
+		   	
 		    if (a.hp==-1){
 		    	PlayState.ArrayE = new ArrayList<Enemy>();
 				PlayState.ArrayI = new ArrayList<Item>();

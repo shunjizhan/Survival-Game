@@ -24,6 +24,7 @@ public class PlayState extends State{
 	//private int score = 0;
 	//private Font scoreFont;
     private static int count=0;
+    public boolean frogCreated2;
 	public static ArrayList<Bullet> ArrayB = new ArrayList<Bullet>();
 	public static ArrayList<Enemy> ArrayE = new ArrayList<Enemy>(); 
 	public static ArrayList<Item> ArrayI = new ArrayList<Item>();  
@@ -166,7 +167,7 @@ public class PlayState extends State{
 
 			// create enemy
 			if(PlayState.stage == 1) {
-			    createEnemy11();	
+			    createEnemy1();	
 			}
 
 			if(PlayState.stage == 2) {
@@ -205,8 +206,36 @@ public class PlayState extends State{
 			    createEnemy10();	
 			}
 
-			
 
+			if(PlayState.stage == 11) {
+			    createEnemy11();	
+			}
+
+			if(PlayState.stage == 12) {
+			    createEnemy12();	
+			}
+
+			if(PlayState.stage == 13) {
+			    createEnemy13();	
+			}
+
+			if(PlayState.stage == 14) {
+			    createEnemy14();	
+			}
+
+			if(PlayState.stage == 15) {
+			    createEnemy15();	
+			}
+
+			if(PlayState.stage == 16) {
+			    createEnemy16();	
+			}
+
+			if(PlayState.stage == 17) {
+			    createEnemy17();	
+			}
+			
+	
 			// draw enemy
 			for (int i1=0; i1<ArrayE.size();i1++){
 			    if(ArrayE.get(i1).kind == 1) {
@@ -286,6 +315,9 @@ public class PlayState extends State{
 			mc.superPower = true;
 		    }
 		}
+		else if (k.getKeyCode() == KeyEvent.VK_V) {
+			PlayState.score = 798;
+		}
 	}
 	
 	//handle key release event
@@ -304,7 +336,7 @@ public class PlayState extends State{
 		
 	}
 
-    public void createEnemy1() {
+      public void createEnemy1() {
 
 	if (count>100) { count=0;}
 	count++;
@@ -474,9 +506,14 @@ public class PlayState extends State{
     }
 
     public void createEnemy11() {
-	if (count>1000) { count=0;}
+	if (count>100) { count=0;}
 	count++;
-	createBoss();
+
+	if(count % 100 == 0) {
+	    for(int i=0; i<900; i+=100) {
+		createNiao(i);
+	    }
+	}
 
     }
 
@@ -484,11 +521,31 @@ public class PlayState extends State{
 	if (count>100) { count=0;}
 	count++;
 
+	if(count % 50 == 0) {
+	    for(int i=0; i<900; i+=60) {
+		createNiu2(i);
+	    }
+	}
+
+	if(frogCreated2 == false) {
+	    createFrog(100);
+	    createFrog(400);
+	    createFrog(700);
+	    frogCreated2 = true;
+	}
+
     }
 
     public void createEnemy13() {
 	if (count>100) { count=0;}
 	count++;
+
+	if(count % 88 == 0) {
+	    for(int i=0; i<900; i+=100) {
+		createFire(i);
+	    }
+	}
+
 
     }
 
@@ -496,25 +553,48 @@ public class PlayState extends State{
 	if (count>100) { count=0;}
 	count++;
 
+	if(count % 50 == 0) {
+	    for(int i=10; i<900; i+=60) {
+		createTu(i);
+	    }
+	}
+
     }
     
     public void createEnemy15() {
 	if (count>100) { count=0;}
 	count++;
-	
-    }
+if(count % 50 == 0) {
+	    for(int i=10; i<900; i+=80) {
+		createGao(i);
+	    }
+	}
+	}
 
     public void createEnemy16() {
 	if (count>100) { count=0;}
 	count++;
+	if(count % 20 == 0) {
+	    for(int i=10; i<900; i+=40) {
+		createYu(i);
+	    }
+	}
+	}
 	
-    }
+    
 
     public void createEnemy17() {
-	if (count>100) { count=0;}
+	if (count>1000) { count=0;}
 	count++;
 
+	if(PlayState.ArrayE.isEmpty()) {
+		createBoss();
+	}
+
     }
+
+
+
 
 
     
@@ -558,7 +638,7 @@ public class PlayState extends State{
     public void createBoss() {
 	if(BossCreated == false) {
 	
-	    bs=new Boss(350,-150,300,150,100);
+	    bs=new Boss(350,-150,300,150,10000);
 	    bs.bossgetposition=false;
 	    BossCreated = true;
 	}
@@ -568,6 +648,8 @@ public class PlayState extends State{
 	
 	}
 	if (bs.bossgetposition){
+
+		if (bs.hp > 9800) {
 			
 		if (count < 500) {
 		      if((count % 10 == 0) && (aa<6)) {
@@ -597,6 +679,14 @@ public class PlayState extends State{
 		
 		}
 	  }
+
+	  else {
+	  	bs.shoot();	
+	  	bs.shoot2();	
+	  	bs.shoot3(mc);	
+	  }
+	  }
+
 	}
     
 }

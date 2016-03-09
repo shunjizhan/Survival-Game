@@ -24,7 +24,7 @@ public class MainCharacter {
 		this.hp=3;
 		this.width = width;
 		this.height= height;
-		this.bombNum = 1;
+		this.bombNum = 2;
 		this.superPower = false;
 		rect =new Rectangle(x+50,y,20,20);
 		VelX=0;

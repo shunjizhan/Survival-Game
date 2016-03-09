@@ -141,9 +141,12 @@ public class Boss {
     	if (this.getRect().intersects(a.getRect()))
 		   {PlayState.ArrayB.remove(a);
 		   	this.hp--;
+		   	System.out.print("hp is" + this.hp);
 		    if (this.hp==-1)
 		   	 {
 		   		GameMain.sGame.setCurrentState(new GameoverState());
+
+		   		System.out.print("Boss is dead!");
 		   		}
 
 	    	}

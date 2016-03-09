@@ -98,39 +98,41 @@ public class Bullet {
 				   PlayState.stage = 10;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
-			       if(PlayState.score == 330) {
+			       if(PlayState.score == 400) {
 				   PlayState.stage = 11;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
-			       if(PlayState.score == 335) {
+			       if(PlayState.score == 430) {
 				   PlayState.stage = 12;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
-			       if(PlayState.score == 380) {
+			       if(PlayState.score == 500) {
 				   PlayState.stage = 13;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
-			       if(PlayState.score == 385) {
+			       if(PlayState.score == 530) {
 				   PlayState.stage = 14;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
-			       if(PlayState.score == 400) {
+			       if(PlayState.score == 570) {
 				   PlayState.stage = 15;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
-			       if(PlayState.score == 405) {
+			       if(PlayState.score == 600) {
 				   PlayState.stage = 16;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
-			       if(PlayState.score == 500) {
+			       
+			       if(PlayState.score == 800) {
 				   PlayState.stage = 17;
 				   System.out.println("stage" +  PlayState.stage);
 			       }
 			       
+			       
 			   }
 		   }		
 	}
-	
+
 
 	
 	
