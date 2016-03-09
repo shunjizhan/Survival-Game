@@ -55,25 +55,25 @@ public class Enemy {
 
 			// fire
 			if(kind == 6) {
-			    VelX= (int)Math.random() * 8 - 4;
+			    VelX= (int)(Math.random() * 8 - 4);
 			    VelY= 2;
 			}
 
 			// gao
 			if(kind == 7) {
-			    VelX= (int)Math.random() * 8 - 4;;
+			    VelX= (int)(Math.random() * 8 - 4);
 			    VelY= 4;
 			}
 
 			// tu
 			if(kind == 8) {
-			    VelX= (int)Math.random() * 10 - 5;;
+			    VelX= (int) (Math.random() * 10 - 5);
 			    VelY= 3;
 			}
 
 			// yu
 			if(kind == 9) {
-			    VelX= (int)Math.random() * 18 - 9;;
+			    VelX= (int)(Math.random() * 18 - 9);
 			    VelY= 6;
 			}
 			
@@ -91,8 +91,11 @@ public class Enemy {
 				}
 				
 			if (kind==8){
-				 if ((y==100) || (y==200) || (y==300) || (y==0))
+				 if ((y==100) || (y==200) || (y==300) || (y==0)){
 				 	this.shoot2();
+				 	this.shoot2();
+				 	
+				 }
 			}
 
 			if (kind==6){
@@ -136,7 +139,7 @@ public class Enemy {
 
 
 		public void shoot1(MainCharacter a){
-			int speed=30;
+			int speed=20;
 			double x1=x+width/2;
 			double y1=y+height;
 			double x2=x1-a.getX()-a.getWidth()/2;

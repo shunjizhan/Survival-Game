@@ -26,7 +26,7 @@ public class MainCharacter {
 		this.height= height;
 		this.bombNum = 1;
 		this.superPower = false;
-		rect =new Rectangle(x+width/10*2,y+height/10*2,width/10*6,height/10*6);
+		rect =new Rectangle(x+50,y,20,20);
 		VelX=0;
 		VelY=0;
 	}
@@ -53,7 +53,7 @@ public class MainCharacter {
 	
 	//update the rectangle under the main character's image
 	private void updateRect(){
-		rect.setBounds(x+width/10*2,y+height/10*2,width/10*6,height/10*6);
+		rect.setBounds(x+50,y,20,20);
 		
 	}
 	

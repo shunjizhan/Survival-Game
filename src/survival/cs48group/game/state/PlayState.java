@@ -20,6 +20,7 @@ import survival.cs48group.game.state.GameoverState;
 public class PlayState extends State{
 	public static MainCharacter  mc;
 	private Boss bs;
+	private static int aa=0;
 	//private int score = 0;
 	//private Font scoreFont;
     private static int count=0;
@@ -62,7 +63,9 @@ public class PlayState extends State{
 		    for (int i=0; i<ArrayI.size();i++){
 		    	ArrayI.get(i).update();
 		    }
-		    
+		    if (BossCreated){
+		    bs.update();
+		}
 		if (bgp>=0)
 			bgp=-2950+GameMain.GAME_HEIGHT;
 		bgp++;
@@ -471,9 +474,8 @@ public class PlayState extends State{
     }
 
     public void createEnemy11() {
-	if (count>100) { count=0;}
+	if (count>1000) { count=0;}
 	count++;
-
 	createBoss();
 
     }
@@ -555,36 +557,47 @@ public class PlayState extends State{
 
     public void createBoss() {
 	if(BossCreated == false) {
-	    bs=new Boss(200,50,300,150,100);
-
+	
+	    bs=new Boss(350,-150,300,150,100);
+	    bs.bossgetposition=false;
 	    BossCreated = true;
 	}
+	
 	for (int i=0;i<ArrayB.size();i++){
 		bs.getdamage(ArrayB.get(i));
-
-	}
 	
-	if (count>500) { count=0;}
-		count++;
-		if (count < 150) {
-		      if(count % 10 == 0) {
-			bs.shoot3(mc);	        
-		    }
+	}
+	if (bs.bossgetposition){
+			
+		if (count < 500) {
+		      if((count % 10 == 0) && (aa<6)) {
+				bs.shoot3(mc);}
+				aa++;
+				if (aa>10) {aa=0;}	        
+		    
 		}
 
-		else if(count < 300) {
-		    if(count % 4 == 0) {
-			bs.shoot2();	        
+		else if(count < 800 ) {
+			bs.stop();
+		    if(count % 10 == 0) {
+		    	for (int i=0;i<20;i++)
+				bs.shoot();	        
 		    }
 		}
 		
-		else {
-		    for(int i=0; i<20; i++) {
-			bs.shoot();
-	        
-		    }
+		else { bs.start();
+			if (count % 10==0){
+			   if (aa % 9==0){
+		    	 bs.shoot2();
+	        	
+		 	   }
+			}
+		    aa++;
+		    if (aa>10) {aa=0;}
+		
 		}
-
-    }
-	
+	  }
+	}
+    
 }
+

@@ -13,8 +13,13 @@ public class Boss {
     public int check=0;
 		private final int Move_Speed=1;
 		private Rectangle rect;
+
+		private int b;
         public int hp;
-    
+    	public boolean bossgetposition=false;
+    	private boolean a=false;
+    	private boolean c=false;
+    	private int x1,x2;
 		//constructor for enemy object
     	public Boss(int x, int y, int width, int height, int hp){
 			this.x = x;
@@ -23,20 +28,59 @@ public class Boss {
 			this.width = width;
 			this.height= height;
 			this.rect = new Rectangle(x+width/10*2,y+height/10*2,width/10*6,height/10*6);
-			this.VelX=0;
-			this.VelY=0;
+			this.VelX=10;
+			this.VelY=10;
 		 }
 		
 		//update the enemy object
 		public void update() {		
-			y += VelY;
-			x += VelX;
-			if (x<0){
-				VelX=-VelX;
-			} else if (x+width>GameMain.GAME_WIDTH){
-				VelX=-VelX;
+			if (!bossgetposition){
+				if (y<100)
+					VelY=2;
+				if (y>=100){
+					bossgetposition=true;
+					c=true;}
+				VelX=0;
+				
 			}
 			
+			else{
+				if (c) 
+					{VelX=3;
+				     c=false;
+				    } 
+
+				if ((y>200) || (y<0)){
+					VelY=-1*(VelY);
+				}
+				if (!a){
+					b=0;
+					x1= (int) (Math.random()*GameMain.GAME_WIDTH)-400;
+					x2= (int) (Math.random()*GameMain.GAME_WIDTH)-400;
+					if (x1<0)
+						x1=0;
+					if (x2<0)
+					 x2=0;
+					int temp;
+					if (x2<x1){
+						temp=x1;
+						x1=x2;
+						x2=temp;
+					}
+					a=true;
+				}
+				if ((x<x1) || (x>x2)){
+					VelX=VelX*-1;
+					b++;
+					if (b>=2){
+					a=false;
+					}
+				}
+	
+			}
+
+			y+=VelY;
+			x+=VelX;
 			updateRect();
 		}
 
@@ -55,7 +99,7 @@ public class Boss {
 			double aa=speed*Math.sin(degree);
 			double bb=speed*Math.cos(degree);
 			PlayState.ArrayBE.add(new BulletE((int)(i+a),(int)(j+b),30,30,(int)(aa),(int)(bb)));
-			check++;
+			check+=2;
 
 		}
 
@@ -106,7 +150,14 @@ public class Boss {
 	}
 	        
 			    	
-		
+	public void stop(){
+		VelX=0;
+		VelY=0;
+	}
+	public void start(){
+		VelX=5;
+		VelY=5;
+	}
 
 		//get the rectangle under the image of the enemy
 		public Rectangle getRect() {
