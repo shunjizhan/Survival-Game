@@ -95,6 +95,9 @@ public class PlayState extends State{
 				mc.onCollideWith1(ArrayI.get(i));
 			}
 
+			for (int i=0;i<ArrayBE.size();i++){
+				ArrayBE.get(i).onCollideWith(mc);
+			}
 			// draw lives number
 		if (mc.hp==3){
 			g.drawImage(Resources.hp,0,GameMain.GAME_HEIGHT-110,null);
@@ -160,7 +163,7 @@ public class PlayState extends State{
 
 			// create enemy
 			if(PlayState.stage == 1) {
-			    createEnemy1();	
+			    createEnemy7();	
 			}
 
 			if(PlayState.stage == 2) {
@@ -290,7 +293,7 @@ public class PlayState extends State{
 				|| k.getKeyCode() == KeyEvent.VK_LEFT
 				|| k.getKeyCode() == KeyEvent.VK_RIGHT
 				|| k.getKeyCode() == KeyEvent.VK_W
-				|| k.getKeyCode() == KeyEvent.VK_X
+				|| k.getKeyCode() == KeyEvent.VK_S
 				|| k.getKeyCode() == KeyEvent.VK_A
 				|| k.getKeyCode() == KeyEvent.VK_D) {
 			mc.stop();
@@ -409,6 +412,10 @@ public class PlayState extends State{
 	   		bs=new Boss(200,50,300,150,100);
 
 	    BossCreated = true;
+	}
+	for (int i=0;i<ArrayB.size();i++){
+		bs.getdamage(ArrayB.get(i));
+
 	}
 	
 	if (count>500) { count=0;}

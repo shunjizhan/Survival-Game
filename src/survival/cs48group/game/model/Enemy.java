@@ -81,7 +81,7 @@ public class Enemy {
 		//update the enemy object
 		public void update() {		
 			y += VelY;
-			VelX=0;
+		
 			x += VelX;
 			if (x<0){
 				x=0;

@@ -12,7 +12,7 @@ import survival.cs48group.game.state.GameoverState;
 public class MainCharacter {
     private int x, y, width, height, VelX,VelY;
     public int hp,bombNum;
-	private final static int Move_Speed=30;
+	private final static int Move_Speed=20;
 	private Rectangle rect;
 	public int powerLevel = 1;
     public boolean superPower;
@@ -134,7 +134,14 @@ public class MainCharacter {
 		if(bombNum < 0) {
 		    bombNum = 0;
 		}
-		PlayState.ArrayE = new ArrayList<Enemy>();
+		PlayState.ArrayB= new ArrayList<Bullet>();
+		PlayState.ArrayI = new ArrayList<Item>();
+
+		for(Enemy e : PlayState.ArrayE) {
+			if(e.kind != 4 && e.kind != 5) {
+				PlayState.ArrayE.remove(e);
+			}
+		}
 	    }
 	}
 

@@ -2,6 +2,7 @@ package survival.cs48group.game.model;
 
 import java.awt.Rectangle;
 import survival.cs48group.game.state.GameoverState;
+import survival.cs48group.game.model.Bullet;
 import survival.cs48group.game.main.GameMain;
 import survival.cs48group.game.state.PlayState;
 import survival.cs48group.game.model.MainCharacter;

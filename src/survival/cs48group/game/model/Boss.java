@@ -4,7 +4,9 @@ import java.awt.Rectangle;
 import survival.cs48group.game.state.PlayState;
 import survival.cs48group.game.main.GameMain;
 import survival.cs48group.game.model.BulletE;
+import survival.cs48group.game.model.Bullet;
 import survival.cs48group.game.model.MainCharacter;
+import survival.cs48group.game.state.GameoverState;
 
 public class Boss {
     private int x, y, width, height, VelX,VelY;
@@ -91,7 +93,17 @@ public class Boss {
 
 		}
 
-    
+    public void getdamage(Bullet a){
+    	if (this.getRect().intersects(a.getRect()))
+		   {PlayState.ArrayB.remove(a);
+		   	this.hp--;
+		    if (this.hp==-1)
+		   	 {
+		   		GameMain.sGame.setCurrentState(new GameoverState());
+		   		}
+
+	    	}
+	}
 	        
 			    	
 		
