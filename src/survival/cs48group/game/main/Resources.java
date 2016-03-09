@@ -9,8 +9,9 @@ import javax.imageio.ImageIO;
 
 public class Resources {
 	
-    public static BufferedImage boss,bulletE,welcome, flight, bullet,bullet2,background,enemies,hpitem,bulletitem,bombitem,hp,bomb,enemy2,frog,frog600,niu1,fire,gao,tu,yu;
-	public static AudioClip long1;
+    public static BufferedImage boss,bulletE,welcome, ins, flight, bullet,bullet2,background,enemies,hpitem,bulletitem,bombitem,hp,bomb,enemy2,frog,frog600,niu1,fire,gao,tu,yu;
+    
+    public static AudioClip menu,bossSound,back;
 	
 	//load all the images and sound for the game
 	public static void load(){
@@ -20,6 +21,7 @@ public class Resources {
 		bullet2 = loadImage("charsmallbullet.png");
 		bulletE = loadImage("enemybullet.png");
 		boss = loadImage("boss.png");
+		ins = loadImage("howtoplay.png");
 	
 		background= loadImage("ingamebackground2.png");
 		enemies = loadImage("birdboss.png");
@@ -36,7 +38,10 @@ public class Resources {
 		gao = loadImage("gao.png");
 		tu = loadImage("tu.png");
 		yu= loadImage("yu.png");
-		long1 = loadSound("long1.wav");
+		menu = loadSound("opening.wav");
+		bossSound = loadSound("boss.wav");
+		back = loadSound("back.wav");
+
 	}
 
     

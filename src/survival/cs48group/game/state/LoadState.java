@@ -12,6 +12,7 @@ public class LoadState extends State{
 	@Override
 	public void initializeState(){
 		Resources.load();
+		Resources.menu.play();
 		System.out.println("Loaded Successfully");
 	}
 	

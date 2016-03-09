@@ -637,7 +637,8 @@ if(count % 50 == 0) {
 
     public void createBoss() {
 	if(BossCreated == false) {
-	    Resources.long1.play();
+	    Resources.back.stop();
+	    Resources.bossSound.play();
 	    bs=new Boss(350,-150,300,150,10000);
 	    bs.bossgetposition=false;
 	    BossCreated = true;

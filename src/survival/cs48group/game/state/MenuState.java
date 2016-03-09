@@ -11,7 +11,7 @@ public class MenuState extends State{
 	//initialize the menu state
 	@Override
 	public void initializeState(){
-		System.out.println("Entered MenuState");
+		System.out.println("Entered instructionState");
 	}
 	
 	//not implemented yet
@@ -25,13 +25,14 @@ public class MenuState extends State{
 	public void renderImages(Graphics g){
 		//Draws Resources.welcome to the screen at x = 0
 		g.drawImage(Resources.welcome, 0, 0, null);
+
 	}
-	
-	//set the current state
-	@Override
-	public void onClick(MouseEvent e){
-		setCurrentState(new PlayState());
+
+    	public void onClick(MouseEvent e){
+	    Resources.menu.stop();
+		setCurrentState(new instructionState());
 	}
+    
 	
 	//not implemented yet
 	@Override

@@ -1,0 +1,255 @@
+    public void createEnemy1() {
+
+	if (count>100) { count=0;}
+	count++;
+	if (count % 50 == 0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		createNiao(x);
+	    }
+    }
+
+    public void createEnemy2() {
+	if (count>100) { count=0;}
+	count++;
+	if (count % 60==0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createNiao(x);
+	    }
+	
+	if (count % 15 == 0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createNiu2(x);
+	    }
+    }
+
+    public void createEnemy3() {
+	if (count>1000) { count=0;}
+	count++;
+	
+	if (count % 80 == 0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createNiao(x);
+	    }
+	
+	if (count % 5 == 0)
+	    {   int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+		createNiu2(x);
+	    }
+    }
+
+    public void createEnemy4() {
+	if (count>1000) { count=0;}
+	count++;
+	
+	if(frogCreated == false) {
+	    createFrog(100);
+	    createFrog(400);
+	    createFrog(700);
+	    frogCreated = true;
+	}
+
+	if (count % 50 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createNiao(x);
+	    }
+	
+	if (count % 15 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createNiu2(x);
+	    }
+
+    }
+
+    public void createEnemy5() {
+	if (count>100) { count=0;}
+	count++;
+
+	if(bigFrogCreated == false) {
+	    createBigFrog(200);
+	    bigFrogCreated = true;
+	}
+
+	if (count % 60 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createNiao(x);
+	    }
+	
+	if (count % 20 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createNiu2(x);
+	    }
+
+    }
+
+    public void createEnemy6() {
+	if (count>100) { count=0;}
+	count++;
+	
+	if (count % 2 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createYu(x);
+	    }
+	
+    }
+
+    public void createEnemy7() {
+	if (count>100) { count=0;}
+	count++;
+	
+	if (count % 50 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createFire(x);
+	    }
+    }
+
+    public void createEnemy8() {
+	if (count>100) { count=0;}
+	count++;
+
+	if (count % 60 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createFire(x);
+	    }
+
+	if (count % 20 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createTu(x);
+	    }
+
+    }
+
+    public void createEnemy9() {
+	if (count>100) { count=0;}
+	count++;
+
+	if (count % 70 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createGao(x);
+	    }
+
+	if (count % 20 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createTu(x);
+	    }
+
+	if (count % 50 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createFire(x);
+	    }
+
+    }
+
+    public void createEnemy10() {
+	if (count>100) { count=0;}
+	count++;
+
+	if (count % 1 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createYu(x);
+	    }
+
+	if (count % 11 == 0)
+	    {   
+		int x=(int) (Math.random()*(GameMain.GAME_WIDTH-180));
+	        createTu(x);
+	    }
+    }
+
+    public void createEnemy11() {
+	if (count>100) { count=0;}
+	count++;
+
+	if(count % 100 == 0) {
+	    for(int i=0; i<600; i+=100) {
+		createNiao(i);
+	    }
+	}
+
+    }
+
+    public void createEnemy12() {
+	if (count>100) { count=0;}
+	count++;
+
+	if(count % 50 == 0) {
+	    for(int i=0; i<650; i+=60) {
+		createNiu2(i);
+	    }
+	}
+
+	if(frogCreated2 == false) {
+	    createFrog(100);
+	    createFrog(400);
+	    createFrog(700);
+	    frogCreated2 = true;
+	}
+
+    }
+
+    public void createEnemy13() {
+	if (count>100) { count=0;}
+	count++;
+
+	if(count % 88 == 0) {
+	    for(int i=0; i<650; i+=100) {
+		createFire(i);
+	    }
+	}
+
+
+    }
+
+    public void createEnemy14() {
+	if (count>100) { count=0;}
+	count++;
+
+	if(count % 50 == 0) {
+	    for(int i=10; i<900; i+=60) {
+		createTu(i);
+	    }
+	}
+
+    }
+    
+    public void createEnemy15() {
+	if (count>100) { count=0;}
+	count++;
+
+	    for(int i=10; i<900; i+=80) {
+		createGao(i);
+	    }
+	}
+	
+    }
+
+    public void createEnemy16() {
+	if (count>100) { count=0;}
+	count++;
+
+	if(count % 2 == 0) {
+	    for(int i=0; i<950; i+=40) {
+		createYu(i);
+	    }
+	}
+	
+    }
+
+    public void createEnemy17() {
+	if (count>100) { count=0;}
+	count++;
+
+	createBoss();
+
+    }
