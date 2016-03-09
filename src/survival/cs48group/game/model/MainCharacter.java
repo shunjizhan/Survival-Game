@@ -135,13 +135,11 @@ public class MainCharacter {
 		    bombNum = 0;
 		}
 		PlayState.ArrayB= new ArrayList<Bullet>();
-		PlayState.ArrayI = new ArrayList<Item>();
-
-		for(Enemy e : PlayState.ArrayE) {
-			if(e.kind != 4 && e.kind != 5) {
-				PlayState.ArrayE.remove(e);
-			}
-		}
+		PlayState.ArrayE = new ArrayList<Enemy>();
+		PlayState.ArrayBE = new ArrayList<BulletE>();
+		try {
+		    Thread.sleep(10);
+		} catch(Exception e) {}
 	    }
 	}
 
@@ -163,11 +161,14 @@ public class MainCharacter {
 		if (this.getRect().intersects(a.getRect()))
 		   {this.hp--;
 		    PlayState.ArrayE.remove(a);
-		    this.powerLevel--;
+		    if(this.powerLevel > 1) {
+			this.powerLevel--;
+		    }
 		    if (this.hp==-1){
 			PlayState.ArrayE = new ArrayList<Enemy>();
 			PlayState.ArrayI = new ArrayList<Item>();
 			PlayState.ArrayB = new ArrayList<Bullet>();
+			PlayState.ArrayBE = new ArrayList<BulletE>();
 		    GameMain.sGame.setCurrentState(new GameoverState());
 		    }
 		  

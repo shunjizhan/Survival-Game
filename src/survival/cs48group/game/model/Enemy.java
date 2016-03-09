@@ -86,7 +86,7 @@ public class Enemy {
 		
 			x += VelX;
 			if (kind==1)
-				{ if ((y==100) || (y==250) ||(y==350))
+				{ if ((y==100) || (y==250) ||(y==10))
 					{this.shoot();}
 				}
 				
@@ -100,16 +100,15 @@ public class Enemy {
 					this.shoot1(PlayState.mc);
 			}
 
-			if (x<0){
-				x=0;
-			} else if (x+width>GameMain.GAME_WIDTH){
-				PlayState.ArrayE.remove(this);
+			if (x<0 || x+width>GameMain.GAME_WIDTH){
+			    VelX *= (-1);
 			}
 			
 			
 			if (y > GameMain.GAME_HEIGHT){
 				PlayState.ArrayE.remove(this);
 			}
+
 			updateRect();
 		}
 		
