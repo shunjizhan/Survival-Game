@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 public class Resources {
 	
     public static BufferedImage boss,bulletE,welcome, flight, bullet,bullet2,background,enemies,hpitem,bulletitem,bombitem,hp,bomb,enemy2,frog,frog600,niu1,fire,gao,tu,yu;
-	public static AudioClip hit;
+	public static AudioClip long1;
 	
 	//load all the images and sound for the game
 	public static void load(){
@@ -36,6 +36,7 @@ public class Resources {
 		gao = loadImage("gao.png");
 		tu = loadImage("tu.png");
 		yu= loadImage("yu.png");
+		long1 = loadSound("long1.wav");
 	}
 
     
@@ -50,5 +51,13 @@ public class Resources {
 		}
 		return img;
 	}
+
+    private static AudioClip loadSound(String filename) {
+	URL fileURL = Resources.class.getClassLoader().getResource("resources/" + filename);
+	if(fileURL == null) {
+	    System.out.println("!!!!!!!!!!!");
+	}
+	return Applet.newAudioClip(fileURL);	
+    }
 
 }
