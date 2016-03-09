@@ -18,7 +18,7 @@ import survival.cs48group.game.model.Item;
 import survival.cs48group.game.model.Boss;
 import survival.cs48group.game.state.GameoverState;
 public class PlayState extends State{
-	private MainCharacter  mc;
+	public static MainCharacter  mc;
 	private Boss bs;
 	//private int score = 0;
 	//private Font scoreFont;
@@ -163,7 +163,7 @@ public class PlayState extends State{
 
 			// create enemy
 			if(PlayState.stage == 1) {
-			    createEnemy7();	
+			    createEnemy6();	
 			}
 
 			if(PlayState.stage == 2) {

@@ -168,7 +168,7 @@ public class MainCharacter {
 			PlayState.ArrayE = new ArrayList<Enemy>();
 			PlayState.ArrayI = new ArrayList<Item>();
 			PlayState.ArrayB = new ArrayList<Bullet>();
-		    	GameMain.sGame.setCurrentState(new GameoverState());
+		    GameMain.sGame.setCurrentState(new GameoverState());
 		    }
 		  
 		   }
